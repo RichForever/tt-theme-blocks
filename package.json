@@ -1,0 +1,28 @@
+{
+	"name": "tt-custom-blocks",
+	"version": "0.1.0",
+	"description": "Example block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --webpack-copy-php && npm run tailwind:build && npm run tailwind:build-editor",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --webpack-copy-php",
+		"tailwind:build-editor": "find ./src -name 'editor.css' | while read file; do output=./build/${file#./src/}; output=${output%editor.css}index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
+		"tailwind:build": "find ./src -name 'style.css' | while read file; do output=./build/${file#./src/}; output=${output%style.css}style-index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.10.0"
+	},
+	"dependencies": {
+		"@tailwindcss/cli": "^4.0.6",
+		"@tailwindcss/postcss": "^4.0.6",
+		"postcss": "^8.5.2",
+		"tailwindcss": "^4.0.6"
+	}
+}

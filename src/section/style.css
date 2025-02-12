@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.wp-block-create-block-section {
+	background: blue;
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/section",
+  "version": "0.1.0",
+  "title": "Section Block",
+  "category": "widgets",
+  "description": "Display your site’s copyright date. 1",
+  "example": {},
+  "attributes": {
+    "content": {
+      "type": "string"
+    },
+    "paddingDefault": {
+      "type": "integer"
+    },
+    "paddingSm": {
+      "type": "integer"
+    },
+    "paddingMd": {
+      "type": "integer"
+    },
+    "paddingLg": {
+      "type": "integer"
+    },
+    "paddingXl": {
+      "type": "integer"
+    },
+    "padding2xl": {
+      "type": "integer"
+    }
+  },
+  "supports": {
+    "jsx": true
+  },
+  "textdomain": "section-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
