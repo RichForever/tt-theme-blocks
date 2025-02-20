@@ -1,28 +1,54 @@
 {
-	"name": "tt-custom-blocks",
-	"version": "1.0.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
-	"license": "GPL-2.0-or-later",
-	"main": "build/index.js",
-	"scripts": {
-		"build": "wp-scripts build --webpack-copy-php && npm run tailwind:build && npm run tailwind:build-editor",
-		"format": "wp-scripts format",
-		"lint:css": "wp-scripts lint-style",
-		"lint:js": "wp-scripts lint-js",
-		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start --webpack-copy-php",
-		"tailwind:build-editor": "find ./src -name 'editor.css' | while read file; do output=./build/${file#./src/}; output=${output%editor.css}index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
-		"tailwind:build": "find ./src -name 'style.css' | while read file; do output=./build/${file#./src/}; output=${output%style.css}style-index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done"
-	},
-	"devDependencies": {
-		"@wordpress/scripts": "^30.10.0"
-	},
-	"dependencies": {
-		"@tailwindcss/cli": "^4.0.6",
-		"@tailwindcss/postcss": "^4.0.6",
-		"postcss": "^8.5.2",
-		"tailwindcss": "^4.0.6"
-	}
+  "name": "tt-custom-blocks",
+  "version": "1.0.0",
+  "description": "Example block scaffolded with Create Block tool.",
+  "author": "The WordPress Contributors",
+  "license": "GPL-2.0-or-later",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "wp-scripts build --webpack-copy-php && npm run tailwind:build && npm run tailwind:build-editor",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "start": "wp-scripts start --webpack-copy-php",
+    "tailwind:build-editor": "find ./src -name 'editor.css' | while read file; do output=./build/${file#./src/}; output=${output%editor.css}index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
+    "tailwind:build": "find ./src -name 'style.css' | while read file; do output=./build/${file#./src/}; output=${output%style.css}style-index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^10.0.0",
+    "@wordpress/scripts": "^30.10.0",
+    "release-it": "^18.1.2"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.6",
+    "@tailwindcss/postcss": "^4.0.6",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^4.0.6"
+  },
+  "release-it": {
+	  "git": {
+		  "commitMessage": "chore: release ${version}"
+	  },
+	  "github": {
+		  "release": true
+	  },
+	  "npm": {
+		  "publish": false
+	  },
+	  "plugins": {
+		  "@release-it/conventional-changelog": {
+			  "infile": "CHANGELOG.md",
+			  "preset": {
+				  "name": "conventionalcommits",
+				  "type": [
+					  { "type": "feat", "section": "Features"},
+					  { "type": "fix", "section": "Bug Fixes"}
+				  ]
+			  }
+		  }
+	  }
+  }
 }
