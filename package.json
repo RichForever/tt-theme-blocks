@@ -16,11 +16,13 @@
     "tailwind:build-editor": "find ./src -name 'editor.css' | while read file; do output=./build/${file#./src/}; output=${output%editor.css}index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
     "tailwind:build": "find ./src -name 'style.css' | while read file; do output=./build/${file#./src/}; output=${output%style.css}style-index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
     "release": "release-it",
+    "commit": "cz",
     "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
+    "@release-it/conventional-changelog": "^10.0.0",
     "@wordpress/scripts": "^30.10.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
@@ -39,27 +41,33 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-	"release-it": {
-		"git": {
-			"commitMessage": "chore: release ${version}"
-		},
-		"github": {
-			"release": true
-		},
-		"npm": {
-			"publish": false
-		},
-		"plugins": {
-			"@release-it/conventional-changelog": {
-				"infile": "CHANGELOG.md",
-				"preset": {
-					"name": "conventionalcommits",
-					"type": [
-						{ "type": "feat", "section": "Features"},
-						{ "type": "fix", "section": "Bug Fixes"}
-					]
-				}
-			}
-		}
-	}
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "type": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            }
+          ]
+        }
+      }
+    }
+  }
 }
