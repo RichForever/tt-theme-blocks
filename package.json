@@ -15,11 +15,15 @@
     "start": "wp-scripts start --webpack-copy-php",
     "tailwind:build-editor": "find ./src -name 'editor.css' | while read file; do output=./build/${file#./src/}; output=${output%editor.css}index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
     "tailwind:build": "find ./src -name 'style.css' | while read file; do output=./build/${file#./src/}; output=${output%style.css}style-index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
-    "release": "release-it"
+    "release": "release-it",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
     "@release-it/conventional-changelog": "^10.0.0",
     "@wordpress/scripts": "^30.10.0",
+    "husky": "^9.1.7",
     "release-it": "^18.1.2"
   },
   "dependencies": {
