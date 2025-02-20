@@ -1,72 +1,123 @@
 {
-  "name": "tt-custom-blocks",
-  "version": "1.1.1",
-  "description": "Example block scaffolded with Create Block tool.",
-  "author": "The WordPress Contributors",
-  "license": "GPL-2.0-or-later",
-  "main": "build/index.js",
-  "scripts": {
-    "build": "wp-scripts build --webpack-copy-php && npm run tailwind:build && npm run tailwind:build-editor",
-    "format": "wp-scripts format",
-    "lint:css": "wp-scripts lint-style",
-    "lint:js": "wp-scripts lint-js",
-    "packages-update": "wp-scripts packages-update",
-    "plugin-zip": "wp-scripts plugin-zip",
-    "start": "wp-scripts start --webpack-copy-php",
-    "tailwind:build-editor": "find ./src -name 'editor.css' | while read file; do output=./build/${file#./src/}; output=${output%editor.css}index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
-    "tailwind:build": "find ./src -name 'style.css' | while read file; do output=./build/${file#./src/}; output=${output%style.css}style-index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
-    "release": "release-it",
-    "commit": "cz",
-    "prepare": "husky"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
-    "@release-it/conventional-changelog": "^10.0.0",
-    "@wordpress/scripts": "^30.10.0",
-    "commitizen": "^4.3.1",
-    "cz-conventional-changelog": "^3.3.0",
-    "husky": "^9.1.7",
-    "release-it": "^18.1.2"
-  },
-  "dependencies": {
-    "@tailwindcss/cli": "^4.0.6",
-    "@tailwindcss/postcss": "^4.0.6",
-    "postcss": "^8.5.2",
-    "tailwindcss": "^4.0.6"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}"
-    },
-    "github": {
-      "release": true
-    },
-    "npm": {
-      "publish": false
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "infile": "CHANGELOG.md",
-        "preset": {
-          "name": "conventionalcommits",
-          "type": [
-            {
-              "type": "feat",
-              "section": "Features"
-            },
-            {
-              "type": "fix",
-              "section": "Bug Fixes"
-            }
-          ]
-        }
-      }
-    }
-  }
+	"name": "tt-custom-blocks",
+	"version": "1.1.1",
+	"description": "Example block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --webpack-copy-php && npm run tailwind:build && npm run tailwind:build-editor",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --webpack-copy-php",
+		"tailwind:build-editor": "find ./src -name 'editor.css' | while read file; do output=./build/${file#./src/}; output=${output%editor.css}index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
+		"tailwind:build": "find ./src -name 'style.css' | while read file; do output=./build/${file#./src/}; output=${output%style.css}style-index.css; mkdir -p \"$(dirname \"$output\")\"; npx tailwindcss -i \"$file\" -o \"$output\" --minify; done",
+		"release": "release-it",
+		"commit": "cz",
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.7.1",
+		"@release-it/conventional-changelog": "^10.0.0",
+		"@wordpress/scripts": "^30.10.0",
+		"commitizen": "^4.3.1",
+		"conventional-changelog-cli": "^5.0.0",
+		"cz-conventional-changelog": "^3.3.0",
+		"husky": "^9.1.7",
+		"release-it": "^18.1.2"
+	},
+	"dependencies": {
+		"@commitlint/config-conventional": "^19.7.1",
+		"@tailwindcss/cli": "^4.0.6",
+		"@tailwindcss/postcss": "^4.0.6",
+		"postcss": "^8.5.2",
+		"tailwindcss": "^4.0.6"
+	},
+	"overrides": {
+		"conventional-changelog-conventionalcommits": "8.0.0"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	},
+	"release-it": {
+		"git": {
+			"commitMessage": "chore: release ${version}"
+		},
+		"github": {
+			"release": true
+		},
+		"npm": {
+			"publish": false
+		},
+		"plugins": {
+			"@release-it/conventional-changelog": {
+				"infile": "CHANGELOG.md",
+				"preset": {
+					"name": "conventionalcommits",
+					"types": [
+						{
+							"type": "feat",
+							"section": "🚀 Features",
+							"hidden": false
+						},
+						{
+							"type": "fix",
+							"section": "🐛 Bug Fixes",
+							"hidden": false
+						},
+						{
+							"type": "docs",
+							"section": "📝 Documentation",
+							"hidden": false
+						},
+						{
+							"type": "style",
+							"section": "💄 Code Style",
+							"hidden": false
+						},
+						{
+							"type": "refactor",
+							"section": "♻️ Refactoring",
+							"hidden": false
+						},
+						{
+							"type": "perf",
+							"section": "⚡ Performance Improvements",
+							"hidden": false
+						},
+						{
+							"type": "test",
+							"section": "🧪 Tests",
+							"hidden": false
+						},
+						{
+							"type": "build",
+							"section": "🏗 Build System",
+							"hidden": false
+						},
+						{
+							"type": "ci",
+							"section": "🔧 Continuous Integration",
+							"hidden": false
+						},
+						{
+							"type": "chore",
+							"section": "📦 Miscellaneous",
+							"hidden": false
+						},
+						{
+							"type": "revert",
+							"section": "⏪ Reversions",
+							"hidden": false
+						}
+					]
+				}
+			}
+		}
+	}
 }
