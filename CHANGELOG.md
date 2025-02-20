@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.1.1](https://github.com/RichForever/tt-theme-blocks/compare/1.1.0...1.1.1) (2025-02-20)
+
 ## 1.1.0 (2025-02-20)
 
 ### Features
