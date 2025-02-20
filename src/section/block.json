@@ -1,33 +1,27 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/section",
+	"name": "tt-custom-blocks/section",
 	"version": "0.1.0",
 	"title": "Section Block",
 	"category": "widgets",
-	"description": "Display your site’s copyright date. 1",
+	"description": "Display custom section tag with various options",
 	"example": {},
 	"attributes": {
-		"content": {
-			"type": "string"
+		"layoutType": {
+			"type": "string",
+			"default": "fullwidth"
 		},
-		"paddingDefault": {
-			"type": "integer"
-		},
-		"paddingSm": {
-			"type": "integer"
-		},
-		"paddingMd": {
-			"type": "integer"
-		},
-		"paddingLg": {
-			"type": "integer"
-		},
-		"paddingXl": {
-			"type": "integer"
-		},
-		"padding2xl": {
-			"type": "integer"
+		"blockVerticalPadding": {
+			"type": "object",
+			"default": {
+				"paddingXs": "0",
+				"paddingSm": "0",
+				"paddingMd": "0",
+				"paddingLg": "0",
+				"paddingXl": "0",
+				"padding2xl": "0"
+			}
 		}
 	},
 	"supports": {

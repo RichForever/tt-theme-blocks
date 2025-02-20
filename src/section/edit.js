@@ -1,15 +1,17 @@
-/**
- * Retrieves the translation of text.
- */
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, InnerBlocks } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, TabPanel } from '@wordpress/components';
+import { InnerBlocks } from '@wordpress/block-editor';
+import {
+	SelectControl,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
 import { useBlockProps } from '@wordpress/block-editor';
+import Layout, { layout } from '../../modules/layout';
 import './editor.css';
 
 // Breakpoints for responsive padding settings
 const BREAKPOINTS = [
-	{ key: 'default', label: 'Default', attribute: 'paddingDefault' },
+	{ key: 'xs', label: 'XS', attribute: 'paddingXs' },
 	{ key: 'sm', label: 'SM', attribute: 'paddingSm' },
 	{ key: 'md', label: 'MD', attribute: 'paddingMd' },
 	{ key: 'lg', label: 'LG', attribute: 'paddingLg' },
@@ -17,77 +19,118 @@ const BREAKPOINTS = [
 	{ key: '2xl', label: '2XL', attribute: 'padding2xl' }
 ];
 
-// Static mapping of padding values to Tailwind classes
-const PADDING_CLASSES = {
-	default: {
-		0: 'py-0', 4: 'py-4', 12: 'py-12', 16: 'py-16', 20: 'py-20', 24: 'py-24'
-	},
-	sm: {
-		0: 'sm:py-0', 4: 'sm:py-4', 12: 'sm:py-12', 16: 'sm:py-16', 20: 'sm:py-20', 24: 'sm:py-24'
-	},
-	md: {
-		0: 'md:py-0', 4: 'md:py-4', 12: 'md:py-12', 16: 'md:py-16', 20: 'md:py-20', 24: 'md:py-24'
-	},
-	lg: {
-		0: 'lg:py-0', 4: 'lg:py-4', 12: 'lg:py-12', 16: 'lg:py-16', 20: 'lg:py-20', 24: 'lg:py-24'
-	},
-	xl: {
-		0: 'xl:py-0', 4: 'xl:py-4', 12: 'xl:py-12', 16: 'xl:py-16', 20: 'xl:py-20', 24: 'xl:py-24'
-	},
-	'2xl': {
-		0: '2xl:py-0', 4: '2xl:py-4', 12: '2xl:py-12', 16: '2xl:py-16', 20: '2xl:py-20', 24: '2xl:py-24'
-	}
-};
+// SelectControl component for selecting padding values
+function PaddingSelect({ attribute, label, value, setAttributes, attributes }) {
+	const blockVerticalPadding = attributes.blockVerticalPadding || {};
+	const paddingOptions = [
+		{ label: '0', value: '0' },
+		{ label: 'px', value: 'px' },
+		{ label: '0.5', value: '0.5' },
+		{ label: '1', value: '1' },
+		{ label: '1.5', value: '1.5' },
+		{ label: '2', value: '2' },
+		{ label: '2.5', value: '2.5' },
+		{ label: '3', value: '3' },
+		{ label: '3.5', value: '3.5' },
+		{ label: '4', value: '4' },
+		{ label: '5', value: '5' },
+		{ label: '6', value: '6' },
+		{ label: '7', value: '7' },
+		{ label: '8', value: '8' },
+		{ label: '9', value: '9' },
+		{ label: '10', value: '10' },
+		{ label: '11', value: '11' },
+		{ label: '12', value: '12' },
+		{ label: '14', value: '14' },
+		{ label: '16', value: '16' },
+		{ label: '20', value: '20' },
+		{ label: '24', value: '24' },
+		{ label: '28', value: '28' },
+		{ label: '32', value: '32' },
+		{ label: '36', value: '36' },
+		{ label: '40', value: '40' },
+		{ label: '44', value: '44' },
+		{ label: '48', value: '48' },
+		{ label: '52', value: '52' },
+		{ label: '56', value: '56' },
+		{ label: '60', value: '60' },
+		{ label: '64', value: '64' },
+		{ label: '72', value: '72' },
+		{ label: '80', value: '80' },
+		{ label: '96', value: '96' },
+	];
 
-// Range component for controlling padding values
-function Range({ attribute, value, setAttributes }) {
 	return (
-		<RangeControl
-			marks={[{ label: '0', value: 0 }, { label: '4', value: 4 }, { label: '12', value: 12 }, { label: '16', value: 16 }, { label: '20', value: 20 }, { label: '24', value: 24 }]}
-			max={24}
-			min={0}
-			// step={1}
-			value={value}
-			onChange={(newValue) => setAttributes({ [attribute]: newValue })}
-			withInputField={false}
+		<SelectControl
+			label={__(`Padding ${label}`, 'section-block')}
+			value={blockVerticalPadding[attribute] || ''}
+			options={paddingOptions}
+			onChange={(newValue) =>
+				setAttributes({
+					blockVerticalPadding: {
+						...blockVerticalPadding, // Preserve other properties in blockVerticalPadding
+						[attribute]: String(newValue) // Update the specific padding property
+					}
+				})
+			}
 		/>
 	);
 }
 
 export default function Edit({ attributes, setAttributes }) {
+	// Ensure blockVerticalPadding exists before using it
+	const { blockVerticalPadding, layoutType } = attributes;
 
 	// Generate padding classes using static mappings
 	const paddingClasses = BREAKPOINTS.map(({ key, attribute }) => {
-		const value = attributes[attribute];
-		return value !== undefined ? PADDING_CLASSES[key][value] || '' : '';
+		const value = blockVerticalPadding[attribute];
+		return value ? `py-${value}` : '';
 	}).join(' ');
 
 	return (
 		<>
-			<InspectorControls>
-				<PanelBody title={__('Settings', 'section-block')}>
-					<TabPanel
-						tabs={BREAKPOINTS.map(({ key, label, attribute }) => ({
-							name: key,
-							title: label,
-							component: (
-								<Range
-									attribute={attribute}
-									value={attributes[attribute]}
-									setAttributes={setAttributes}
-								/>
-							)
-						}))}
+			<Layout
+				general={
+					<ToggleGroupControl
+						label="Layout type"
+						value={layoutType}
+						isBlock
+						__nextHasNoMarginBottom
+						__next40pxDefaultSize
+						onChange={(val) => setAttributes({
+							layoutType: val
+						})}
 					>
-						{(tab) => tab.component}
-					</TabPanel>
-				</PanelBody>
-			</InspectorControls>
-			<div {...useBlockProps({
-				className: paddingClasses
-			})}>
-				<InnerBlocks />
-			</div>
+						<ToggleGroupControlOption value="fullwidth" label="Full width" />
+						<ToggleGroupControlOption value="boxed" label="Boxed" />
+					</ToggleGroupControl>
+				}
+				style={
+					<>
+						{BREAKPOINTS.map(({ key, label, attribute }) => (
+							<PaddingSelect
+								key={key}
+								label={label}
+								attribute={attribute}
+								value={blockVerticalPadding[attribute] || ''}
+								setAttributes={setAttributes}
+								attributes={attributes}
+							/>
+						))}
+					</>
+				}
+				advanced={<></>}
+			/>
+
+			<section {...useBlockProps({ className: paddingClasses })}>
+				{layoutType === 'boxed' ? (
+					<div className="container mx-auto">
+						<InnerBlocks />
+					</div>
+				) : (
+					<InnerBlocks />
+				)}
+			</section>
 		</>
 	);
 }
