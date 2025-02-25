@@ -19,7 +19,7 @@ function PaddingSelect( { attribute, label, setAttributes, attributes } ) {
 	return (
 		<SelectControl
 			// translators: %s: padding position (e.g., "Top", "Bottom", "Left", "Right")
-			label={ sprintf( __( 'Padding %s', 'section-block' ), label ) }
+			label={ sprintf( __( 'Padding %s', 'tt-theme-blocks' ), label ) }
 			value={ padding[ attribute ] || '' }
 			options={ SPACING_OPTIONS }
 			onChange={ ( newValue ) =>
