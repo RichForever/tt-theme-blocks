@@ -2,16 +2,12 @@
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-import {InnerBlocks} from '@wordpress/block-editor';
-
-/**
+ *
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
- *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {useBlockProps} from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -21,9 +17,9 @@ import {useBlockProps} from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function Save({attributes, setAttributes}) {
+export default function Save() {
 	return (
-		<div {...useBlockProps.save()}>
+		<div { ...useBlockProps.save() }>
 			<InnerBlocks.Content />
 		</div>
 	);

@@ -12,15 +12,14 @@
       "type": "string",
       "default": "fullwidth"
     },
-    "blockVerticalPadding": {
+    "padding": {
       "type": "object",
       "default": {
-        "paddingXs": "0",
-        "paddingSm": "0",
-        "paddingMd": "0",
-        "paddingLg": "0",
-        "paddingXl": "0",
-        "padding2xl": "0"
+        "sm": "0",
+        "md": "0",
+        "lg": "0",
+        "xl": "0",
+        "2xl": "0"
       }
     }
   },

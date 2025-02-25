@@ -1,17 +1,13 @@
 import { InspectorControls } from '@wordpress/block-editor';
-import {
-	Card,
-	CardBody,
-	TabPanel,
-} from '@wordpress/components';
-import "./layout.css"
-const layout = ({ general, style, advanced }) => {
+import { Card, CardBody, TabPanel } from '@wordpress/components';
+import './layout.scss';
+const layout = ( { general, style, advanced } ) => {
 	return (
 		<InspectorControls>
 			<TabPanel
 				className="customBlockControls__tabs"
-				onSelect={() => {}}
-				tabs={[
+				onSelect={ () => {} }
+				tabs={ [
 					{
 						name: 'general',
 						title: 'General',
@@ -20,25 +16,23 @@ const layout = ({ general, style, advanced }) => {
 					{
 						name: 'style',
 						title: 'Style',
-						component: style
+						component: style,
 					},
 					{
 						name: 'advanced',
 						title: 'Advanced',
-						component: advanced
+						component: advanced,
 					},
-				]}
+				] }
 			>
-				{(tab) => (
-					<Card isRounded={false} variant="secondary">
-						<CardBody>
-							{tab.component}
-						</CardBody>
+				{ ( tab ) => (
+					<Card isRounded={ false } variant="secondary">
+						<CardBody>{ tab.component }</CardBody>
 					</Card>
-				)}
+				) }
 			</TabPanel>
 		</InspectorControls>
-	)
-}
+	);
+};
 
 export default layout;
