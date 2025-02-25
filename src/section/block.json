@@ -27,7 +27,8 @@
 	"supports": {
 		"jsx": true,
 		"color": {
-			"background": true
+			"background": true,
+			"text": false
 		}
 	},
 	"textdomain": "tt-theme-blocks",
