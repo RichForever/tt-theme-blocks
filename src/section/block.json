@@ -15,18 +15,19 @@
 		"padding": {
 			"type": "object",
 			"default": {
-				"sm": "0",
-				"md": "0",
-				"lg": "0",
-				"xl": "0",
-				"2xl": "0"
+				"xs": "-",
+				"sm": "-",
+				"md": "-",
+				"lg": "-",
+				"xl": "-",
+				"2xl": "-"
 			}
 		}
 	},
 	"supports": {
 		"jsx": true
 	},
-	"textdomain": "section-block",
+	"textdomain": "tt-theme-blocks",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

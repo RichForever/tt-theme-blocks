@@ -1,4 +1,5 @@
 export const SPACING_OPTIONS = [
+	{ label: 'None', value: '-' },
 	{ label: '0', value: '0' },
 	{ label: 'px', value: 'px' },
 	{ label: '0.5', value: '0.5' },
@@ -35,20 +36,3 @@ export const SPACING_OPTIONS = [
 	{ label: '80', value: '80' },
 	{ label: '96', value: '96' },
 ];
-
-export const BREAKPOINTS = [
-	{ key: 'sm', label: 'SM', attribute: 'sm' },
-	{ key: 'md', label: 'MD', attribute: 'md' },
-	{ key: 'lg', label: 'LG', attribute: 'lg' },
-	{ key: 'xl', label: 'XL', attribute: 'xl' },
-	{ key: '2xl', label: '2XL', attribute: '2xl' },
-];
-
-// Generate complete padding classes for all spacing options
-export const PADDING_CLASSES = SPACING_OPTIONS.reduce( ( acc, { value } ) => {
-	acc[ value ] = BREAKPOINTS.reduce( ( classes, { key } ) => {
-		classes[ key ] = `${ key }:py-${ value }`;
-		return classes;
-	}, {} );
-	return acc;
-}, {} );

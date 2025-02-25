@@ -2,37 +2,17 @@
 import { __, sprintf } from '@wordpress/i18n';
 
 import {
-	InnerBlocks,
+	Button,
 	SelectControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
-import { useBlockProps } from '@wordpress/block-editor';
-import Layout from '../modules/layout';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import Layout from '../../components/Layout';
 import './editor.scss';
-import { SPACING_OPTIONS, BREAKPOINTS, PADDING_CLASSES } from './spacing';
-
-// SelectControl component for selecting size values
-function PaddingSelect( { attribute, label, setAttributes, attributes } ) {
-	const padding = attributes.padding || {};
-
-	return (
-		<SelectControl
-			// translators: %s: padding position (e.g., "Top", "Bottom", "Left", "Right")
-			label={ sprintf( __( 'Padding %s', 'tt-theme-blocks' ), label ) }
-			value={ padding[ attribute ] || '' }
-			options={ SPACING_OPTIONS }
-			onChange={ ( newValue ) =>
-				setAttributes( {
-					padding: {
-						...padding,
-						[ attribute ]: String( newValue ),
-					},
-				} )
-			}
-		/>
-	);
-}
+import { SPACING_OPTIONS } from '../../utils/spacing';
+import { BREAKPOINTS } from '../../utils/breakpoints';
+import { PADDING_CLASSES } from '../../utils/cls';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { padding, layoutType } = attributes;
@@ -45,6 +25,19 @@ export default function Edit( { attributes, setAttributes } ) {
 		}
 		return classes;
 	}, [] ).join( ' ' );
+
+	const handleResetPadding = () => {
+		setAttributes( {
+			padding: {
+				xs: '-',
+				sm: '-',
+				md: '-',
+				lg: '-',
+				xl: '-',
+				'2xl': '-',
+			},
+		} );
+	};
 
 	return (
 		<>
@@ -72,17 +65,33 @@ export default function Edit( { attributes, setAttributes } ) {
 				style={
 					<>
 						{ BREAKPOINTS.map( ( { key, label, attribute } ) => (
-							<PaddingSelect
+							<SelectControl
 								key={ key }
-								label={ label }
-								attribute={ attribute }
-								setAttributes={ setAttributes }
-								attributes={ attributes }
+								label={ sprintf(
+									// translators: %s: padding position (e.g., "Top", "Bottom", "Left", "Right")
+									__( 'Padding %s', 'tt-theme-blocks' ),
+									label
+								) }
+								value={
+									( padding && padding[ attribute ] ) || ''
+								}
+								options={ SPACING_OPTIONS }
+								__nextHasNoMarginBottom
+								onChange={ ( newValue ) =>
+									setAttributes( {
+										padding: {
+											...( padding || {} ),
+											[ attribute ]: String( newValue ),
+										},
+									} )
+								}
 							/>
 						) ) }
+						<Button isDestructive onClick={ handleResetPadding }>
+							{ __( 'Reset to defaults', 'tt-theme-blocks' ) }
+						</Button>
 					</>
 				}
-				advanced={ <></> }
 			/>
 
 			<section { ...useBlockProps( { className: paddingClasses } ) }>
