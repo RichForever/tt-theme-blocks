@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.0](https://github.com/RichForever/tt-theme-blocks/compare/1.3.0...1.4.0) (2025-02-25)
+
+### 🚀 Features
+
+* section block refactor and other improvements ([08a46d2](https://github.com/RichForever/tt-theme-blocks/commit/08a46d20333c78ed4fe4a27dff8025ec1f1c39ae))
+
+### 💄 Code Style
+
+* fix eslint warnings ([2ca2b66](https://github.com/RichForever/tt-theme-blocks/commit/2ca2b6610bdb65cc9534d926f73e07416a4209de))
+
 ## [1.3.0](https://github.com/RichForever/tt-theme-blocks/compare/1.2.0...1.3.0) (2025-02-25)
 
 ### 🚀 Features
