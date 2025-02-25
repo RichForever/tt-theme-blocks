@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.0](https://github.com/RichForever/tt-theme-blocks/compare/1.1.1...1.2.0) (2025-02-25)
+
+### 🚀 Features
+
+* add eslint config files, resolve eslint warnings ([d20002c](https://github.com/RichForever/tt-theme-blocks/commit/d20002c848e79bee8936f4c84677519d692f377a))
+
+### 🏗 Build System
+
+* **package.json:** update dependencies ([afaeec5](https://github.com/RichForever/tt-theme-blocks/commit/afaeec5f453ffa03627c88c953615ec54562d832))
+
 ## [1.1.1](https://github.com/RichForever/tt-theme-blocks/compare/1.1.0...1.1.1) (2025-02-21)
 
 ### 📝 Documentation
