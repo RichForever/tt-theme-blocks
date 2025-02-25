@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0](https://github.com/RichForever/tt-theme-blocks/compare/1.2.0...1.3.0) (2025-02-25)
+
+### 🚀 Features
+
+* add eslint extra rules ([644869f](https://github.com/RichForever/tt-theme-blocks/commit/644869fe8483bcc8be2f62c08462828021dca85e))
+
 ## [1.2.0](https://github.com/RichForever/tt-theme-blocks/compare/1.1.1...1.2.0) (2025-02-25)
 
 ### 🚀 Features
