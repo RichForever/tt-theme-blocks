@@ -1,11 +1,17 @@
 import { InspectorControls } from '@wordpress/block-editor';
-import { Card, CardBody, TabPanel } from '@wordpress/components';
+import {
+	Card,
+	CardBody,
+	Panel,
+	PanelBody,
+	PanelRow,
+} from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import './Layout.scss';
 
 const Layout = ( { general, style, advanced } ) => {
 	// Filter out undefined tabs
-	const tabs = [
+	const panels = [
 		{
 			name: 'general',
 			title: __( 'General', 'tt-theme-blocks' ),
@@ -26,9 +32,9 @@ const Layout = ( { general, style, advanced } ) => {
 				advanced ||
 				__( 'No advanced settings available', 'tt-theme-blocks' ),
 		},
-	].filter( ( tab ) => tab.component );
+	].filter( ( panel ) => panel.component );
 
-	if ( tabs.length === 0 ) {
+	if ( panels.length === 0 ) {
 		return (
 			<InspectorControls>
 				<Card isRounded={ false } variant="secondary">
@@ -42,17 +48,19 @@ const Layout = ( { general, style, advanced } ) => {
 
 	return (
 		<InspectorControls>
-			<TabPanel
-				className="customBlockControls__tabs"
-				onSelect={ () => {} }
-				tabs={ tabs }
-			>
-				{ ( tab ) => (
-					<Card isRounded={ false } variant="secondary">
-						<CardBody>{ tab.component }</CardBody>
-					</Card>
-				) }
-			</TabPanel>
+			<Panel className="customBlockControls__panel">
+				{ panels.map( ( panel, key ) => (
+					<PanelBody
+						key={ key }
+						title={ panel.title }
+						initialOpen={ false }
+					>
+						<PanelRow className="customBlockControls__panelRow">
+							<div>{ panel.component }</div>
+						</PanelRow>
+					</PanelBody>
+				) ) }
+			</Panel>
 		</InspectorControls>
 	);
 };

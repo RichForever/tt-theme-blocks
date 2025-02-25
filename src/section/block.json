@@ -25,7 +25,10 @@
 		}
 	},
 	"supports": {
-		"jsx": true
+		"jsx": true,
+		"color": {
+			"background": true
+		}
 	},
 	"textdomain": "tt-theme-blocks",
 	"editorScript": "file:./index.js",
