@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.1](https://github.com/RichForever/tt-theme-blocks/compare/1.4.0...1.4.1) (2025-02-25)
+
+### ♻️ Refactoring
+
+* **block.json:** disable color settings for text ([7e95fd1](https://github.com/RichForever/tt-theme-blocks/commit/7e95fd1a22df50082cc08b78c685c7ec7f43af88))
+
+### 🔧 Continuous Integration
+
+* **.gitignore:** add build directory to .gitignore file ([4102021](https://github.com/RichForever/tt-theme-blocks/commit/4102021679907c861242df7fb21561e892c5b87a))
+
 ## [1.4.0](https://github.com/RichForever/tt-theme-blocks/compare/1.3.0...1.4.0) (2025-02-25)
 
 ### 🚀 Features
