@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.1](https://github.com/RichForever/tt-theme-blocks/compare/1.5.0...1.5.1) (2025-02-26)
+
+### ♻️ Refactoring
+
+* resolve eslint warnings ([8f6b0b8](https://github.com/RichForever/tt-theme-blocks/commit/8f6b0b84957405f2c3901b3c8bfdf1ac9e1a4a66))
+
 ## [1.5.0](https://github.com/RichForever/tt-theme-blocks/compare/1.4.1...1.5.0) (2025-02-26)
 
 ### 🚀 Features
