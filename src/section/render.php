@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/spacing.php';
+include dirname(__FILE__) . '/spacing.php';
 /**
  * Render the section block with responsive padding classes
  */
