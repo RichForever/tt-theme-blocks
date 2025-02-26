@@ -9,6 +9,9 @@
  */
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
+import { BREAKPOINTS } from '../../config/constants';
+import { PADDING_CLASSES } from '../../utils/cls';
+
 // eslint-disable-next-line jsdoc/require-param
 /**
  * The save function defines the way in which the different attributes should
@@ -20,11 +23,32 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
  * @return {Element} Element to render.
  */
 export default function Save( { attributes } ) {
-	const { htmlElementType } = attributes;
+	const { htmlElementType, layoutType, padding } = attributes;
+
+	// Get complete Tailwind classes based on padding values
+	const paddingClasses = BREAKPOINTS.reduce( ( classes, { key } ) => {
+		const value = padding[ key ];
+		if ( value && PADDING_CLASSES[ value ] ) {
+			classes.push( PADDING_CLASSES[ value ][ key ] );
+		}
+		return classes;
+	}, [] ).join( ' ' );
+
 	const Tag = htmlElementType;
+
+	const blockProps = useBlockProps.save( {
+		className: paddingClasses,
+	} );
+
 	return (
-		<Tag { ...useBlockProps.save() }>
-			<InnerBlocks.Content />
+		<Tag { ...blockProps }>
+			{ layoutType === 'boxed' ? (
+				<div className="container mx-auto">
+					<InnerBlocks.Content />
+				</div>
+			) : (
+				<InnerBlocks.Content />
+			) }
 		</Tag>
 	);
 }

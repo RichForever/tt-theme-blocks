@@ -41,7 +41,7 @@ export const StylePanel = ( { attributes, setAttributes } ) => {
 					}
 				/>
 			) ) }
-			<Button isDestructive onClick={ handleResetPadding }>
+			<Button isDestructive variant="link" onClick={ handleResetPadding }>
 				{ __( 'Reset to defaults', 'tt-theme-blocks' ) }
 			</Button>
 		</>

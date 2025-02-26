@@ -4,7 +4,7 @@ import Layout from '../../components/Layout';
 import './editor.scss';
 import { BREAKPOINTS } from '../../config/constants';
 import { PADDING_CLASSES } from '../../utils/cls';
-import { LayoutPanel, StylePanel, ContentPanel } from './panels';
+import { LayoutPanel, StylePanel } from './panels';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { htmlElementType, layoutType, padding } = attributes;
@@ -19,6 +19,10 @@ export default function Edit( { attributes, setAttributes } ) {
 	}, [] ).join( ' ' );
 
 	const Tag = htmlElementType;
+
+	const blockProps = useBlockProps( {
+		className: paddingClasses,
+	} );
 
 	return (
 		<>
@@ -36,11 +40,10 @@ export default function Edit( { attributes, setAttributes } ) {
 							setAttributes={ setAttributes }
 						/>
 					),
-					content: <ContentPanel />,
 				} }
 			/>
 
-			<Tag { ...useBlockProps( { className: paddingClasses } ) }>
+			<Tag { ...blockProps }>
 				{ layoutType === 'boxed' ? (
 					<div className="container mx-auto">
 						<InnerBlocks />
