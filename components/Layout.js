@@ -1,4 +1,5 @@
 import { InspectorControls } from '@wordpress/block-editor';
+import { cloneElement } from '@wordpress/element';
 import {
 	Card,
 	CardBody,
@@ -7,34 +8,46 @@ import {
 	PanelRow,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { DEFAULT_PANELS } from '../config/panels';
 import './Layout.scss';
 
-const Layout = ( { general, style, advanced } ) => {
-	// Filter out undefined tabs
-	const panels = [
-		{
-			name: 'general',
-			title: __( 'General', 'tt-theme-blocks' ),
-			component:
-				general ||
-				__( 'No general settings available', 'tt-theme-blocks' ),
-		},
-		{
-			name: 'style',
-			title: __( 'Style', 'tt-theme-blocks' ),
-			component:
-				style || __( 'No style settings available', 'tt-theme-blocks' ),
-		},
-		{
-			name: 'advanced',
-			title: __( 'Advanced', 'tt-theme-blocks' ),
-			component:
-				advanced ||
-				__( 'No advanced settings available', 'tt-theme-blocks' ),
-		},
-	].filter( ( panel ) => panel.component );
+const iconStyles = {
+	marginRight: '8px',
+	display: 'inline-flex',
+	alignItems: 'center',
+	verticalAlign: 'middle',
+};
 
-	if ( panels.length === 0 ) {
+const Layout = ( { panels = {} } ) => {
+	// Convert panels object to array and filter out undefined components
+	const activePanels = Object.entries( panels )
+		.map( ( [ name, component ] ) => {
+			const panelConfig = DEFAULT_PANELS[ name ];
+			if ( ! panelConfig ) {
+				return null;
+			}
+
+			return {
+				name,
+				title: (
+					<>
+						<span style={ iconStyles }>
+							{ cloneElement( panelConfig.icon, {
+								style: {
+									width: '20px',
+									height: '20px',
+								},
+							} ) }
+						</span>
+						<span>{ panelConfig.title }</span>
+					</>
+				),
+				component: component || panelConfig.defaultContent,
+			};
+		} )
+		.filter( Boolean );
+
+	if ( activePanels.length === 0 ) {
 		return (
 			<InspectorControls>
 				<Card isRounded={ false } variant="secondary">
@@ -49,11 +62,12 @@ const Layout = ( { general, style, advanced } ) => {
 	return (
 		<InspectorControls>
 			<Panel className="customBlockControls__panel">
-				{ panels.map( ( panel, key ) => (
+				{ activePanels.map( ( panel ) => (
 					<PanelBody
-						key={ key }
+						key={ panel.name }
 						title={ panel.title }
 						initialOpen={ false }
+						className="customBlockControls__panelBody"
 					>
 						<PanelRow className="customBlockControls__panelRow">
 							<div>{ panel.component }</div>

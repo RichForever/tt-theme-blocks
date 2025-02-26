@@ -1,5 +1,4 @@
-import { SPACING_OPTIONS } from './spacing';
-import { BREAKPOINTS } from './breakpoints';
+import { SPACING_OPTIONS, BREAKPOINTS } from '../config/constants';
 
 export const PADDING_CLASSES = SPACING_OPTIONS.reduce( ( acc, { value } ) => {
 	// Skip the "None" option
