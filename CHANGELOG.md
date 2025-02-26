@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.5.0](https://github.com/RichForever/tt-theme-blocks/compare/1.4.1...1.5.0) (2025-02-26)
+
+### 🚀 Features
+
+* refactor panel codebase, fix gitignore file ([c290050](https://github.com/RichForever/tt-theme-blocks/commit/c290050b8871ce9724e8f3cf0e27136272271aa9))
+
+### 📝 Documentation
+
+* **readme.md:** added readme.md file that is describing structure of the project ([424af8f](https://github.com/RichForever/tt-theme-blocks/commit/424af8f89d0de288c0187868584eed7dd32d6316))
+
+### ♻️ Refactoring
+
+* change way of include php file with breakpoints ([9b9294e](https://github.com/RichForever/tt-theme-blocks/commit/9b9294e8082ef1bbde93af6c26f1194f62f6d861))
+
 ## [1.4.1](https://github.com/RichForever/tt-theme-blocks/compare/1.4.0...1.4.1) (2025-02-25)
 
 ### ♻️ Refactoring
