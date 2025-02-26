@@ -7,7 +7,7 @@ import { PADDING_CLASSES } from '../../utils/cls';
 import { LayoutPanel, StylePanel, ContentPanel } from './panels';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { padding, layoutType } = attributes;
+	const { htmlElementType, layoutType, padding } = attributes;
 
 	// Get complete Tailwind classes based on padding values
 	const paddingClasses = BREAKPOINTS.reduce( ( classes, { key } ) => {
@@ -17,6 +17,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		}
 		return classes;
 	}, [] ).join( ' ' );
+
+	const Tag = htmlElementType;
 
 	return (
 		<>
@@ -38,7 +40,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				} }
 			/>
 
-			<section { ...useBlockProps( { className: paddingClasses } ) }>
+			<Tag { ...useBlockProps( { className: paddingClasses } ) }>
 				{ layoutType === 'boxed' ? (
 					<div className="container mx-auto">
 						<InnerBlocks />
@@ -46,7 +48,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				) : (
 					<InnerBlocks />
 				) }
-			</section>
+			</Tag>
 		</>
 	);
 }

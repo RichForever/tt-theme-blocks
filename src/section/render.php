@@ -22,6 +22,7 @@ $padding = $attributes['padding'] ?? [
 	'2xl' => '-'
 ];
 $layoutType = $attributes['layoutType'] ?? 'fullwidth';
+$htmlElementType = $attributes['htmlElementType'] ?? 'section';
 
 // Get complete Tailwind classes based on padding values
 $padding_classes = [];
@@ -36,7 +37,7 @@ foreach ($BREAKPOINTS as $breakpoint) {
 $padding_classes = implode(' ', array_filter($padding_classes));
 ?>
 
-<section <?php echo get_block_wrapper_attributes(['class' => $padding_classes]); ?>>
+<<?php echo $htmlElementType; ?> <?php echo get_block_wrapper_attributes(['class' => $padding_classes]); ?>>
 	<?php if ($layoutType === 'boxed'): ?>
 		<div class="container mx-auto">
 	<?php endif; ?>
@@ -46,4 +47,4 @@ $padding_classes = implode(' ', array_filter($padding_classes));
 	<?php if ($layoutType === 'boxed'): ?>
 		</div>
 	<?php endif; ?>
-</section>
+</<?php echo $htmlElementType; ?>>

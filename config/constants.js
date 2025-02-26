@@ -45,3 +45,8 @@ export const SPACING_OPTIONS = [
 	{ label: '80', value: '80' },
 	{ label: '96', value: '96' },
 ];
+
+export const HTML_ELEMENTS_OPTIONS = [
+	{ label: 'div', value: 'div' },
+	{ label: 'section', value: 'section' },
+];

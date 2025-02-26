@@ -12,6 +12,10 @@
 			"type": "string",
 			"default": "fullwidth"
 		},
+		"htmlElementType": {
+			"type": "string",
+			"default": "section"
+		},
 		"padding": {
 			"type": "object",
 			"default": {

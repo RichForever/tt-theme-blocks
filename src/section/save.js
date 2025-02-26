@@ -9,18 +9,22 @@
  */
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
+// eslint-disable-next-line jsdoc/require-param
 /**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
+ * The save function defines the way in which the different attributes should
+ * be combined into the final markup, which is then serialized by the block
+ * editor into `post_content`.
  *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
  *
  * @return {Element} Element to render.
  */
-export default function Save() {
+export default function Save( { attributes } ) {
+	const { htmlElementType } = attributes;
+	const Tag = htmlElementType;
 	return (
-		<div { ...useBlockProps.save() }>
+		<Tag { ...useBlockProps.save() }>
 			<InnerBlocks.Content />
-		</div>
+		</Tag>
 	);
 }
