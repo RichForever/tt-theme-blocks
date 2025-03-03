@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.5.3](https://github.com/RichForever/tt-theme-blocks/compare/1.5.2...1.5.3) (2025-03-03)
+
+### 🐛 Bug Fixes
+
+* fix eslint errors ([078acd1](https://github.com/RichForever/tt-theme-blocks/commit/078acd13585da335f4fa70d0bdbb028854e90ed6))
+
+### 📝 Documentation
+
+* Delete README.MD ([8b43b3a](https://github.com/RichForever/tt-theme-blocks/commit/8b43b3a6f760e9c54c129d4819a24935d4024e53))
+
 ## [1.5.2](https://github.com/RichForever/tt-theme-blocks/compare/1.5.1...1.5.2) (2025-02-26)
 
 ### ♻️ Refactoring
