@@ -1,3 +1,7 @@
+/**
+ * Breakpoints for responsive design.
+ * @type {Array<{key: string, label: string, attribute: string}>}
+ */
 export const BREAKPOINTS = [
 	{ key: 'xs', label: 'XS', attribute: 'xs' },
 	{ key: 'sm', label: 'SM', attribute: 'sm' },
@@ -7,6 +11,10 @@ export const BREAKPOINTS = [
 	{ key: '2xl', label: '2XL', attribute: '2xl' },
 ];
 
+/**
+ * Spacing options for padding, margin, etc.
+ * @type {Array<{label: string, value: string}>}
+ */
 export const SPACING_OPTIONS = [
 	{ label: 'None', value: '-' },
 	{ label: '0', value: '0' },
@@ -50,3 +58,43 @@ export const HTML_ELEMENTS_OPTIONS = [
 	{ label: 'div', value: 'div' },
 	{ label: 'section', value: 'section' },
 ];
+
+// Add block-specific defaults
+export const BLOCK_DEFAULTS = {
+	ICON_PICKER: {
+		padding: {
+			xs: '-',
+			sm: '-',
+			md: '-',
+			lg: '-',
+			xl: '-',
+			'2xl': '-',
+		},
+		size: {
+			xs: '-',
+			sm: '-',
+			md: '-',
+			lg: '-',
+			xl: '-',
+			'2xl': '-',
+		},
+	},
+	SECTION: {
+		padding: {
+			xs: '-',
+			sm: '-',
+			md: '-',
+			lg: '-',
+			xl: '-',
+			'2xl': '-',
+		},
+		layoutType: 'fullwidth',
+		htmlElementType: 'section',
+	},
+};
+
+// Add block types enum
+export const BLOCK_TYPES = {
+	ICON_PICKER: 'tt-theme-blocks/icon-picker',
+	SECTION: 'tt-theme-blocks/section',
+};

@@ -1,46 +1,37 @@
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+import { useTailwindClasses } from '@hooks';
+
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import Layout from '../../components/Layout';
+
+import StylesControls from './controls/StylesControls';
+import SettingsControls from './controls/SettingsControls';
+
 import './editor.scss';
-import { BREAKPOINTS } from '../../config/constants';
-import { PADDING_CLASSES } from '../../utils/cls';
-import { LayoutPanel, StylePanel } from './panels';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { htmlElementType, layoutType, padding } = attributes;
+	const { htmlElementType, layoutType } = attributes;
 
-	// Get complete Tailwind classes based on padding values
-	const paddingClasses = BREAKPOINTS.reduce( ( classes, { key } ) => {
-		const value = padding[ key ];
-		if ( value && PADDING_CLASSES[ value ] ) {
-			classes.push( PADDING_CLASSES[ value ][ key ] );
-		}
-		return classes;
-	}, [] ).join( ' ' );
+	// Generate Tailwind classes.
+	const { paddingClasses } = useTailwindClasses( attributes, {
+		paddingPrefix: 'py',
+	} );
 
 	const Tag = htmlElementType;
 
+	// Set up block props.
 	const blockProps = useBlockProps( {
 		className: paddingClasses,
 	} );
 
 	return (
 		<>
-			<Layout
-				panels={ {
-					layout: (
-						<LayoutPanel
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-						/>
-					),
-					style: (
-						<StylePanel
-							attributes={ attributes }
-							setAttributes={ setAttributes }
-						/>
-					),
-				} }
+			<SettingsControls
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+			/>
+			<StylesControls
+				attributes={ attributes }
+				setAttributes={ setAttributes }
 			/>
 
 			<Tag { ...blockProps }>

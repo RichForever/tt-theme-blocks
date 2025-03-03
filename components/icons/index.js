@@ -10,5 +10,6 @@ import { Brush } from './Brush';
 import { Settings } from './Settings';
 import { Layers } from './Layers';
 import { TextSize } from './TextSize';
+import { Shapes } from './Shapes';
 
-export { Layout, Brush, Settings, Layers, TextSize };
+export { Layout, Brush, Settings, Layers, TextSize, Shapes };

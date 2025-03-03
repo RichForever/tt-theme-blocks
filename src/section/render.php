@@ -1,5 +1,4 @@
 <?php
-include dirname(__FILE__) . '/spacing.php';
 /**
  * Render the section block with responsive padding classes
  */
@@ -12,32 +11,24 @@ if (!empty($block->inner_blocks)) {
 	}
 }
 
-// Get attributes with defaults
-$padding = $attributes['padding'] ?? [
-	'xs' => '-',
-	'sm' => '-',
-	'md' => '-',
-	'lg' => '-',
-	'xl' => '-',
-	'2xl' => '-'
-];
-$layoutType = $attributes['layoutType'] ?? 'fullwidth';
-$htmlElementType = $attributes['htmlElementType'] ?? 'section';
+// Get attributes with defaults.
+$padding = $attributes['padding'] ?? BLOCK_DEFAULTS['SECTION']['padding'];
+$layoutType = $attributes['layoutType'] ?? BLOCK_DEFAULTS['SECTION']['layoutType'];
+$htmlElementType = $attributes['htmlElementType'] ?? BLOCK_DEFAULTS['SECTION']['htmlElementType'];
 
-// Get complete Tailwind classes based on padding values
-$padding_classes = [];
-foreach ($BREAKPOINTS as $breakpoint) {
-	$value = $padding[$breakpoint] ?? '-';
-	if ($value !== '-' && isset($PADDING_CLASSES[$value][$breakpoint])) {
-		$padding_classes[] = $PADDING_CLASSES[$value][$breakpoint];
-	}
-}
+// Generate classes from attributes.
+$padding_classes = implode(' ', array_filter(array_map(function ($breakpoint, $value) {
+	if ($value === '-') return '';
+	// For xs breakpoint, don't add prefix
+	return $breakpoint === 'xs' ? "py-{$value}" : "{$breakpoint}:py-{$value}";
+}, array_keys($padding), $padding)));
 
-// Convert classes array to string.
-$padding_classes = implode(' ', array_filter($padding_classes));
+$block_wrapper_attributes = get_block_wrapper_attributes([
+	'class' => $padding_classes
+]);
 ?>
 
-<<?php echo $htmlElementType; ?> <?php echo get_block_wrapper_attributes(['class' => $padding_classes]); ?>>
+<<?php echo $htmlElementType; ?> <?php echo $block_wrapper_attributes; ?>>
 	<?php if ($layoutType === 'boxed'): ?>
 		<div class="container mx-auto">
 	<?php endif; ?>

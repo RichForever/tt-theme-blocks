@@ -26,5 +26,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function tt_custom_blocks_init() {
 	register_block_type( __DIR__ . '/build/section' );
+	register_block_type( __DIR__ . '/build/icon-picker' );
 }
 add_action( 'init', 'tt_custom_blocks_init' );
+
+add_filter( 'should_load_separate_core_block_assets', '__return_true' );

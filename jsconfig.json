@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"jsx": "react-jsx",
+		"checkJs": true,
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["*"],
+			"@utils/*": ["utils/*"],
+			"@components/*": ["components/*"],
+			"@hooks/*": ["hooks/*"],
+			"@config/*": ["config/*"],
+			"@icons/*": ["components/icons/*"]
+		}
+	},
+	"exclude": ["node_modules", "build"]
+}

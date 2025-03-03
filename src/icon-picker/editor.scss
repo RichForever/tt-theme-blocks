@@ -1,0 +1,13 @@
+/* eslint-disable scss/at-rule-no-unknown */
+@use "tailwindcss/base" as *;
+@use "tailwindcss/components" as *;
+@use "tailwindcss/utilities" as *;
+
+.wp-block-tt-theme-blocks-icon-picker {
+	border: 1px dotted #38bdf8;
+}
+
+.icon-container svg {
+	width: 100%;
+	height: 100%;
+}
