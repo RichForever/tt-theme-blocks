@@ -50,9 +50,11 @@ export default function Edit( { attributes, setAttributes } ) {
 			<Tag { ...blockProps }>
 				{ layoutType === 'boxed' ? (
 					<div className="container mx-auto">
-						<InnerBlocks
-							template={ INNER_BLOCKS_SECTION_TEMPLATE }
-						/>
+						<div className="border border-red-500 border-dotted">
+							<InnerBlocks
+								template={ INNER_BLOCKS_SECTION_TEMPLATE }
+							/>
+						</div>
 					</div>
 				) : (
 					<InnerBlocks template={ INNER_BLOCKS_SECTION_TEMPLATE } />

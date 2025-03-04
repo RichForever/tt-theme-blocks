@@ -46,12 +46,16 @@ export default function Edit( { attributes, setAttributes } ) {
 		: __( 'Edit icon', 'tt-theme-blocks' );
 
 	// Render the icon or placeholder.
-	const iconMarkup = ! iconFromAttributes ? (
-		<IconInserterPlaceholder onClick={ openModal } />
-	) : (
-		<div className={ `icon-container ${ iconSizeClasses }` }>
-			{ printedIcon }
-		</div>
+	const iconMarkup = (
+		<>
+			{ ! iconFromAttributes ? (
+				<IconInserterPlaceholder onClick={ openModal } />
+			) : (
+				<div className={ `icon-container ${ iconSizeClasses }` }>
+					{ printedIcon }
+				</div>
+			) }
+		</>
 	);
 
 	return (

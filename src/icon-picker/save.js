@@ -24,11 +24,11 @@ export default function Save( { attributes } ) {
 		className: `${ iconPaddingClasses } w-fit`,
 	} );
 
-	return (
-		<div { ...blockProps }>
-			<div className={ `icon-container ${ iconSizeClasses }` }>
-				{ printedIcon }
-			</div>
+	const iconMarkup = (
+		<div className={ `icon-container ${ iconSizeClasses }` }>
+			{ printedIcon }
 		</div>
 	);
+
+	return <div { ...blockProps }>{ iconMarkup }</div>;
 }
