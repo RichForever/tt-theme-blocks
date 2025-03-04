@@ -34,7 +34,7 @@ const IconInserterModal = ( {
 	// Synchronize selectedIcon with iconFromAttributes
 	useEffect( () => {
 		setSelectedIcon( iconFromAttributes );
-	}, [ iconFromAttributes ] ); // Run this effect when iconFromAttributes changes
+	}, [ iconFromAttributes, setSelectedIcon ] ); // Run this effect when iconFromAttributes changes
 
 	if ( ! isModalOpen ) {
 		return null;
@@ -63,7 +63,7 @@ const IconInserterModal = ( {
 		>
 			<Card size="extraSmall" isRounded={ false } isBorderless>
 				<CardBody>
-					<VStack gap="16">
+					<VStack gap={ 16 }>
 						<IconPreview icon={ parsedIcon } />
 						<TextareaControl
 							__nextHasNoMarginBottom

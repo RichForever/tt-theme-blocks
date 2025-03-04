@@ -47,7 +47,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	// Render the icon or placeholder.
 	const iconMarkup = ! iconFromAttributes ? (
-		<IconInserterPlaceholder onAddIcon={ openModal } />
+		<IconInserterPlaceholder onClick={ openModal } />
 	) : (
 		<div className={ `icon-container ${ iconSizeClasses }` }>
 			{ printedIcon }

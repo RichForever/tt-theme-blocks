@@ -1,6 +1,7 @@
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { useTailwindClasses } from '@hooks';
 
+import { __ } from '@wordpress/i18n';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 import StylesControls from './controls/StylesControls';
@@ -23,6 +24,18 @@ export default function Edit( { attributes, setAttributes } ) {
 		className: paddingClasses,
 	} );
 
+	const INNER_BLOCKS_SECTION_TEMPLATE = [
+		[
+			'core/paragraph',
+			{
+				placeholder: __(
+					'Click here and type "/" to add block',
+					'tt-theme-blocks'
+				),
+			},
+		],
+	];
+
 	return (
 		<>
 			<SettingsControls
@@ -37,10 +50,12 @@ export default function Edit( { attributes, setAttributes } ) {
 			<Tag { ...blockProps }>
 				{ layoutType === 'boxed' ? (
 					<div className="container mx-auto">
-						<InnerBlocks />
+						<InnerBlocks
+							template={ INNER_BLOCKS_SECTION_TEMPLATE }
+						/>
 					</div>
 				) : (
-					<InnerBlocks />
+					<InnerBlocks template={ INNER_BLOCKS_SECTION_TEMPLATE } />
 				) }
 			</Tag>
 		</>
