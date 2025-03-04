@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.7](https://github.com/RichForever/tt-theme-blocks/compare/1.5.6...1.5.7) (2025-03-04)
+
+### ♻️ Refactoring
+
+* move eslint disable line to proper place ([f84469e](https://github.com/RichForever/tt-theme-blocks/commit/f84469ee352899d5c8c61364357569e6554bac65))
+
 ## [1.5.6](https://github.com/RichForever/tt-theme-blocks/compare/1.5.5...1.5.6) (2025-03-04)
 
 ### ♻️ Refactoring
