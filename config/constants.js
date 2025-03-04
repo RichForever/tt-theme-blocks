@@ -3,12 +3,42 @@
  * @type {Array<{key: string, label: string, attribute: string}>}
  */
 export const BREAKPOINTS = [
-	{ key: 'xs', label: 'XS', attribute: 'xs' },
-	{ key: 'sm', label: 'SM', attribute: 'sm' },
-	{ key: 'md', label: 'MD', attribute: 'md' },
-	{ key: 'lg', label: 'LG', attribute: 'lg' },
-	{ key: 'xl', label: 'XL', attribute: 'xl' },
-	{ key: '2xl', label: '2XL', attribute: '2xl' },
+	{
+		key: 'xs',
+		label: 'XS',
+		attribute: 'xs',
+		description: 'Extra small screens (default, no media query)',
+	},
+	{
+		key: 'sm',
+		label: 'SM',
+		attribute: 'sm',
+		description: 'Small screens and above (≥640px)',
+	},
+	{
+		key: 'md',
+		label: 'MD',
+		attribute: 'md',
+		description: 'Medium screens and above (≥768px)',
+	},
+	{
+		key: 'lg',
+		label: 'LG',
+		attribute: 'lg',
+		description: 'Large screens and above (≥1024px)',
+	},
+	{
+		key: 'xl',
+		label: 'XL',
+		attribute: 'xl',
+		description: 'Extra large screens and above (≥1280px)',
+	},
+	{
+		key: '2xl',
+		label: '2XL',
+		attribute: '2xl',
+		description: '2x extra large screens and above (≥1536px)',
+	},
 ];
 
 /**

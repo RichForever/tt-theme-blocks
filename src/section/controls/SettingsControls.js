@@ -1,13 +1,16 @@
-import { __ } from '@wordpress/i18n';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { HTML_ELEMENTS_OPTIONS } from '@config/constants';
+import styled from '@emotion/styled';
 import { InspectorControls } from '@wordpress/block-editor';
 import {
 	SelectControl,
+	__experimentalText as Text,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 const SettingsControls = ( { attributes, setAttributes } ) => {
 	const { htmlElementType, layoutType } = attributes;
@@ -16,13 +19,23 @@ const SettingsControls = ( { attributes, setAttributes } ) => {
 			layoutType: 'fullwidth',
 			htmlElementType: 'section',
 		} );
-
+	const PanelDescription = styled.div`
+		grid-column: span 2;
+	`;
 	return (
 		<InspectorControls group="settings">
 			<ToolsPanel
 				label={ __( 'Settings', 'tt-theme-blocks' ) }
 				resetAll={ handleResetSettings }
 			>
+				<PanelDescription>
+					<Text variant="muted">
+						{ __(
+							'Customize the layout type and HTML element for your section to adapt to different design requirements.',
+							'tt-theme-blocks'
+						) }
+					</Text>
+				</PanelDescription>
 				<ToolsPanelItem
 					label={ __( 'Layout type', 'tt-theme-blocks' ) }
 					hasValue={ () => !! layoutType }

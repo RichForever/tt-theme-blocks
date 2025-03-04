@@ -33,6 +33,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^19.7.1",
 		"@commitlint/config-conventional": "^19.7.1",
+		"@emotion/styled": "^11.14.0",
 		"@release-it/conventional-changelog": "^10.0.0",
 		"@wordpress/data": "^10.19.0",
 		"@wordpress/scripts": "^30.12.0",
