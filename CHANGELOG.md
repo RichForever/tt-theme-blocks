@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.6](https://github.com/RichForever/tt-theme-blocks/compare/1.5.5...1.5.6) (2025-03-04)
+
+### ♻️ Refactoring
+
+* add descriptions to blocks and specific settings ([7143de9](https://github.com/RichForever/tt-theme-blocks/commit/7143de963f5cefed6eb5603dcd77f2f72b66089e))
+
 ## [1.5.5](https://github.com/RichForever/tt-theme-blocks/compare/1.5.4...1.5.5) (2025-03-04)
 
 ### ♻️ Refactoring
