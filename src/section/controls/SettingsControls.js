@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { HTML_ELEMENTS_OPTIONS } from '@config/constants';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import styled from '@emotion/styled';
 import { InspectorControls } from '@wordpress/block-editor';
 import {
