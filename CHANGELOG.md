@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.5](https://github.com/RichForever/tt-theme-blocks/compare/1.5.4...1.5.5) (2025-03-04)
+
+### ♻️ Refactoring
+
+* remove render.php file for both blocks ([b4da6ee](https://github.com/RichForever/tt-theme-blocks/commit/b4da6ee01da4ad8f4e2dfaa0deb02990aae059e8))
+
 ## [1.5.4](https://github.com/RichForever/tt-theme-blocks/compare/1.5.3...1.5.4) (2025-03-04)
 
 ### 💄 Code Style
