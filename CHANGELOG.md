@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.4](https://github.com/RichForever/tt-theme-blocks/compare/1.5.3...1.5.4) (2025-03-04)
+
+### 💄 Code Style
+
+* fix eslint ([2744f36](https://github.com/RichForever/tt-theme-blocks/commit/2744f369eac2fb3b305a56dedfe33518c70e1ba5))
+
 ## [1.5.3](https://github.com/RichForever/tt-theme-blocks/compare/1.5.2...1.5.3) (2025-03-03)
 
 ### 🐛 Bug Fixes
