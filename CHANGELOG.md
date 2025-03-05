@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.8](https://github.com/RichForever/tt-theme-blocks/compare/1.5.7...1.5.8) (2025-03-05)
+
+### ♻️ Refactoring
+
+* add ability to use icon from media library, some common fixes ([5891433](https://github.com/RichForever/tt-theme-blocks/commit/589143341bf2d207eaa6ce574f7a7acac844dca1))
+
 ## [1.5.7](https://github.com/RichForever/tt-theme-blocks/compare/1.5.6...1.5.7) (2025-03-04)
 
 ### ♻️ Refactoring
