@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash';
 
-import { parseIcon } from '@utils/parseIcon';
+import { parseIcon } from '../utils/parseIcon';
 
 /**
  * Parses an SVG icon and ensures it is valid.

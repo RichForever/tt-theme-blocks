@@ -1,9 +1,11 @@
-import { useIconParser, useTailwindClasses } from '@hooks';
-
+import { useTailwindClasses } from '@hooks';
+import { useIconParser } from './hooks/useIconParser';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classnames from 'classnames';
 import { useBlockProps } from '@wordpress/block-editor';
 
 export default function Save( { attributes } ) {
-	const { icon } = attributes;
+	const { icon, iconOverriddeFill } = attributes;
 	const printedIcon = useIconParser( icon );
 
 	// Generate Tailwind classes.
@@ -19,15 +21,25 @@ export default function Save( { attributes } ) {
 		return null;
 	}
 
+	const iconContainerClasses = classnames(
+		'icon-container',
+		iconSizeClasses,
+		{
+			'*:fill-current': iconOverriddeFill,
+		}
+	);
+
+	const blockPropsClasses = classnames( iconPaddingClasses, {
+		'w-fit': icon,
+	} );
+
 	// Apply block props and render the icon.
 	const blockProps = useBlockProps.save( {
-		className: `${ iconPaddingClasses } w-fit`,
+		className: blockPropsClasses,
 	} );
 
 	const iconMarkup = (
-		<div className={ `icon-container ${ iconSizeClasses }` }>
-			{ printedIcon }
-		</div>
+		<div className={ iconContainerClasses }>{ printedIcon }</div>
 	);
 
 	return <div { ...blockProps }>{ iconMarkup }</div>;

@@ -1,19 +1,27 @@
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
-import { useIconParser, useTailwindClasses } from '@hooks';
+import { useTailwindClasses } from '@hooks';
+import {
+	useIconParser,
+	useIconPickerState,
+	useSvgUploadAllowed,
+} from './hooks';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { ToolbarButton } from '@wordpress/components';
 import { BlockControls, useBlockProps } from '@wordpress/block-editor';
 
 import StylesControls from './controls/StylesControls';
 import IconInserterModal from './components/IconInserterModal';
-import { useIconPickerState } from './hooks/useIconPickerState';
+
 import IconInserterPlaceholder from './components/IconInserterPlaceholder';
+import IconBlockControlsDropdown from './components/IconBlockControlsDropdown';
 
 import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { icon: iconFromAttributes } = attributes;
+	const { icon: iconFromAttributes, iconOverriddeFill } = attributes;
 
 	// Use the icon picker state hook.
 	const {
@@ -35,25 +43,41 @@ export default function Edit( { attributes, setAttributes } ) {
 		}
 	);
 
+	const iconContainerClasses = classnames(
+		'icon-container',
+		iconSizeClasses,
+		{
+			'*:fill-current': iconOverriddeFill,
+		}
+	);
+
+	const blockPropsClasses = classnames( iconPaddingClasses, {
+		'w-fit': iconFromAttributes,
+	} );
+
 	// Set up block props.
 	const blockProps = useBlockProps( {
-		className: `${ iconPaddingClasses } w-fit`,
+		className: blockPropsClasses,
 	} );
 
 	// Determine the toolbar button label.
-	const toolbarButtonLabel = ! iconFromAttributes
-		? __( 'Add icon', 'tt-theme-blocks' )
-		: __( 'Edit icon', 'tt-theme-blocks' );
+	const replaceText = iconFromAttributes
+		? __( 'Replace', 'tt-theme-blocks' )
+		: __( 'Add icon', 'tt-theme-blocks' );
 
+	const isSVGUploadAllowed = useSvgUploadAllowed();
 	// Render the icon or placeholder.
 	const iconMarkup = (
 		<>
 			{ ! iconFromAttributes ? (
-				<IconInserterPlaceholder onClick={ openModal } />
+				<IconInserterPlaceholder
+					openModal={ openModal }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					isSVGUploadAllowed={ isSVGUploadAllowed }
+				/>
 			) : (
-				<div className={ `icon-container ${ iconSizeClasses }` }>
-					{ printedIcon }
-				</div>
+				<div className={ iconContainerClasses }>{ printedIcon }</div>
 			) }
 		</>
 	);
@@ -61,10 +85,19 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<BlockControls group="other">
-				<ToolbarButton
-					text={ toolbarButtonLabel }
-					onClick={ openModal }
-				/>
+				{ isSVGUploadAllowed ? (
+					<IconBlockControlsDropdown
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						iconFromAttributes={ iconFromAttributes }
+						openModal={ openModal }
+						isSVGUploadAllowed={ isSVGUploadAllowed }
+					/>
+				) : (
+					<ToolbarButton onClick={ openModal }>
+						{ replaceText }
+					</ToolbarButton>
+				) }
 			</BlockControls>
 			<StylesControls
 				attributes={ attributes }

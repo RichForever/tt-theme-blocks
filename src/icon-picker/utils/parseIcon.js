@@ -80,7 +80,6 @@ export const parseIcon = ( icon ) => {
 					</Tag>
 				);
 			}
-
 			// Handle other elements.
 			return (
 				<Tag

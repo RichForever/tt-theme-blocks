@@ -1,4 +1,4 @@
-import { useIconParser } from '@hooks';
+import { useIconParser } from '../hooks';
 
 import { __ } from '@wordpress/i18n';
 import { useEffect } from '@wordpress/element';

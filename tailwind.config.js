@@ -16,10 +16,6 @@ module.exports = {
 			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
 		},
 		{
-			pattern: /^px-/,
-			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
-		},
-		{
 			pattern: /^p-/,
 			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
 		},
