@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.5.12](https://github.com/RichForever/tt-theme-blocks/compare/1.5.11...1.5.12) (2025-03-06)
+
+### ♻️ Refactoring
+
+* add custom block category ([c5563c4](https://github.com/RichForever/tt-theme-blocks/commit/c5563c424fcdbb9393befd48468e4356702856e6))
+
+### 📦 Miscellaneous
+
+* add bump script to release it ([5f6765c](https://github.com/RichForever/tt-theme-blocks/commit/5f6765ce090d4f0851fdd04a75abe9ad219bb650))
+
 ## [1.5.11](https://github.com/RichForever/tt-theme-blocks/compare/1.5.10...1.5.11) (2025-03-06)
 
 ### 📦 Miscellaneous
