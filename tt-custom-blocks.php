@@ -31,3 +31,14 @@ function tt_custom_blocks_init() {
 add_action( 'init', 'tt_custom_blocks_init' );
 
 add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+
+add_filter( 'block_categories_all' , function( $categories ) {
+
+    // Adding a new category.
+	$categories[] = array(
+		'slug'  => 'tt-theme-blocks-category',
+		'title' => 'TT Theme Blocks'
+	);
+
+	return $categories;
+} );

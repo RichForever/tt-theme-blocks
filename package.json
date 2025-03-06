@@ -34,6 +34,7 @@
 		"@commitlint/cli": "^19.7.1",
 		"@commitlint/config-conventional": "^19.7.1",
 		"@emotion/styled": "^11.14.0",
+		"@release-it/bumper": "^7.0.1",
 		"@release-it/conventional-changelog": "^10.0.0",
 		"@wordpress/data": "^10.19.0",
 		"@wordpress/scripts": "^30.12.0",
@@ -82,6 +83,11 @@
 			"publish": false
 		},
 		"plugins": {
+			"@release-it/bumper": {
+				"in": "tt-custom-blocks.php",
+				"out": "tt-custom-blocks.php",
+				"regex": "Version:\\s*([\\d.]+)"
+			},
 			"@release-it/conventional-changelog": {
 				"infile": "CHANGELOG.md",
 				"preset": {
