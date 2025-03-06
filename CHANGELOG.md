@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.11](https://github.com/RichForever/tt-theme-blocks/compare/1.5.10...1.5.11) (2025-03-06)
+
+### 📦 Miscellaneous
+
+* fix plugin version ([a2f91d6](https://github.com/RichForever/tt-theme-blocks/commit/a2f91d69397592b78f6f4b78d75de708f33e6d5d))
+
 ## [1.5.10](https://github.com/RichForever/tt-theme-blocks/compare/1.5.9...1.5.10) (2025-03-06)
 
 ### 📦 Miscellaneous
