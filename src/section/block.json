@@ -4,7 +4,7 @@
 	"name": "tt-theme-blocks/section",
 	"version": "0.1.0",
 	"title": "Section Block",
-	"category": "widgets",
+	"category": "tt-theme-blocks-category",
 	"description": "Display custom section tag with various options",
 	"example": {},
 	"attributes": {

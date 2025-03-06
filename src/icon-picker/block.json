@@ -4,7 +4,7 @@
 	"name": "tt-theme-blocks/icon-picker",
 	"version": "0.1.0",
 	"title": "Icon Picker Block",
-	"category": "widgets",
+	"category": "tt-theme-blocks-category",
 	"description": "Display custom icon with various options",
 	"example": {},
 	"attributes": {
