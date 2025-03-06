@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.10](https://github.com/RichForever/tt-theme-blocks/compare/1.5.9...1.5.10) (2025-03-06)
+
+### 📦 Miscellaneous
+
+* bump plugin version ([e8131e4](https://github.com/RichForever/tt-theme-blocks/commit/e8131e4e93173a5cbaabc3e4047775dcd508087a))
+
 ## [1.5.9](https://github.com/RichForever/tt-theme-blocks/compare/1.5.8...1.5.9) (2025-03-06)
 
 ### ♻️ Refactoring
