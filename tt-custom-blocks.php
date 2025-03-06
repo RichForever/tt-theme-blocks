@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:       TimberTail Theme Blocks
- * Description:       Example block scaffolded with Create Block tool.
- * Version:           0.1.0
+ * Description:       This plugin provides a collection of custom blocks designed to enhance the content creation experience within the WordPress ecosystem.
+ * Version:           1.6.0
  * Requires at least: 6.7
  * Requires PHP:      7.4
  * Author:            The WordPress Contributors
