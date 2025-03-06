@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.9](https://github.com/RichForever/tt-theme-blocks/compare/1.5.8...1.5.9) (2025-03-06)
+
+### ♻️ Refactoring
+
+* refactor for section block and icon-picker ([fe22092](https://github.com/RichForever/tt-theme-blocks/commit/fe220920ab1653a7e55dc17fb055ffbdb0c703e8))
+
 ## [1.5.8](https://github.com/RichForever/tt-theme-blocks/compare/1.5.7...1.5.8) (2025-03-05)
 
 ### ♻️ Refactoring
