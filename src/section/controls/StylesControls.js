@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import styled from '@emotion/styled';
 import { __, sprintf } from '@wordpress/i18n';
-import { InspectorControls } from '@wordpress/block-editor';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { BREAKPOINTS, SPACING_OPTIONS } from '@config/constants';
 import {
 	SelectControl,
@@ -11,10 +11,11 @@ import {
 } from '@wordpress/components';
 
 const StylesControls = ( { attributes, setAttributes } ) => {
-	const { padding } = attributes;
+	const { sectionPadding, sectionBackground } = attributes;
+
 	const handleResetPadding = () => {
 		setAttributes( {
-			padding: {
+			sectionPadding: {
 				xs: '-',
 				sm: '-',
 				md: '-',
@@ -24,33 +25,48 @@ const StylesControls = ( { attributes, setAttributes } ) => {
 			},
 		} );
 	};
-	const PanelDescription = styled.div`
+
+	const ControlWrapper = styled.div`
 		grid-column: span 2;
 	`;
+
 	return (
 		<InspectorControls group="styles">
+			<PanelColorSettings
+				// @ts-ignore
+				__experimentalIsRenderedInSidebar
+				title={ __( 'Background', 'tt-theme-blocks' ) }
+				colorSettings={ [
+					{
+						value: sectionBackground,
+						onChange: ( color ) =>
+							setAttributes( { sectionBackground: color } ),
+						label: __( 'Background', 'tt-theme-blocks' ),
+					},
+				] }
+			/>
 			<ToolsPanel
-				label={ __( 'Section vertical padding', 'tt-theme-blocks' ) }
+				label={ __( 'Padding', 'tt-theme-blocks' ) }
 				resetAll={ handleResetPadding }
 			>
-				<PanelDescription>
+				<ControlWrapper>
 					<Text variant="muted">
 						{ __(
 							'Adjust the vertical padding for different breakpoints. This allows you to control the spacing around the section on various screen sizes.',
 							'tt-theme-blocks'
 						) }
 					</Text>
-				</PanelDescription>
+				</ControlWrapper>
 				{ BREAKPOINTS.map(
 					( { key, label, attribute, description: help } ) => (
 						<ToolsPanelItem
 							key={ key }
 							label={ label }
-							hasValue={ () => !! padding }
+							hasValue={ () => !! sectionPadding }
 							onDeselect={ () =>
 								setAttributes( {
-									padding: {
-										...( padding || {} ),
+									sectionPadding: {
+										...( sectionPadding || {} ),
 										[ attribute ]: '-',
 									},
 								} )
@@ -65,14 +81,16 @@ const StylesControls = ( { attributes, setAttributes } ) => {
 								) }
 								help={ help }
 								value={
-									( padding && padding[ attribute ] ) || ''
+									( sectionPadding &&
+										sectionPadding[ attribute ] ) ||
+									''
 								}
 								options={ SPACING_OPTIONS }
 								__nextHasNoMarginBottom
 								onChange={ ( newValue ) =>
 									setAttributes( {
-										padding: {
-											...( padding || {} ),
+										sectionPadding: {
+											...( sectionPadding || {} ),
 											[ attribute ]: String( newValue ),
 										},
 									} )

@@ -13,11 +13,11 @@ export const useTailwindClasses = (
 	attributes,
 	options = { paddingPrefix: '', includeSize: false }
 ) => {
-	const { padding = attributes.iconPadding, iconSize } = attributes;
+	const { sectionPadding = attributes.iconPadding, iconSize } = attributes;
 	const { paddingPrefix = 'p', includeSize = false } = options;
 
 	const paddingClasses = BREAKPOINTS.reduce( ( classes, { key } ) => {
-		const value = padding?.[ key ];
+		const value = sectionPadding?.[ key ];
 		if ( value && PADDING_CLASSES[ value ]?.[ key ] ) {
 			classes.push(
 				PADDING_CLASSES[ value ][ key ].replace(

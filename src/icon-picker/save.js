@@ -4,8 +4,10 @@ import { useIconParser } from './hooks/useIconParser';
 import classnames from 'classnames';
 import { useBlockProps } from '@wordpress/block-editor';
 
+const CSS_CLASS_PREFIX = 'wp-block-tt-theme-blocks-icon-picker';
+
 export default function Save( { attributes } ) {
-	const { icon, iconOverriddeFill } = attributes;
+	const { icon, iconOverriddeFill, iconColor, iconBackground } = attributes;
 	const printedIcon = useIconParser( icon );
 
 	// Generate Tailwind classes.
@@ -22,16 +24,26 @@ export default function Save( { attributes } ) {
 	}
 
 	const iconContainerClasses = classnames(
-		'icon-container',
+		`${ CSS_CLASS_PREFIX }__container`,
+		iconPaddingClasses
+	);
+
+	const iconClasses = classnames(
+		`${ CSS_CLASS_PREFIX }__icon`,
 		iconSizeClasses,
 		{
 			'*:fill-current': iconOverriddeFill,
 		}
 	);
 
-	const blockPropsClasses = classnames( iconPaddingClasses, {
+	const blockPropsClasses = classnames( {
 		'w-fit': icon,
 	} );
+
+	const iconStyles = {
+		color: iconColor,
+		background: iconBackground,
+	};
 
 	// Apply block props and render the icon.
 	const blockProps = useBlockProps.save( {
@@ -39,7 +51,9 @@ export default function Save( { attributes } ) {
 	} );
 
 	const iconMarkup = (
-		<div className={ iconContainerClasses }>{ printedIcon }</div>
+		<div className={ iconContainerClasses } style={ iconStyles }>
+			<div className={ iconClasses }>{ printedIcon }</div>
+		</div>
 	);
 
 	return <div { ...blockProps }>{ iconMarkup }</div>;

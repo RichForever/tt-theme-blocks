@@ -8,15 +8,15 @@
 	"description": "Display custom section tag with various options",
 	"example": {},
 	"attributes": {
-		"layoutType": {
+		"sectionLayout": {
 			"type": "string",
 			"default": "fullwidth"
 		},
-		"htmlElementType": {
+		"sectionHtmlElement": {
 			"type": "string",
 			"default": "section"
 		},
-		"padding": {
+		"sectionPadding": {
 			"type": "object",
 			"default": {
 				"xs": "-",
@@ -26,13 +26,10 @@
 				"xl": "-",
 				"2xl": "-"
 			}
-		}
-	},
-	"supports": {
-		"jsx": true,
-		"color": {
-			"background": true,
-			"text": false
+		},
+		"sectionBackground": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"textdomain": "tt-theme-blocks",

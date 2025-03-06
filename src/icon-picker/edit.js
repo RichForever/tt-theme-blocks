@@ -20,8 +20,15 @@ import IconBlockControlsDropdown from './components/IconBlockControlsDropdown';
 
 import './editor.scss';
 
+const CSS_CLASS_PREFIX = 'wp-block-tt-theme-blocks-icon-picker';
+
 export default function Edit( { attributes, setAttributes } ) {
-	const { icon: iconFromAttributes, iconOverriddeFill } = attributes;
+	const {
+		icon: iconFromAttributes,
+		iconOverriddeFill,
+		iconColor,
+		iconBackground,
+	} = attributes;
 
 	// Use the icon picker state hook.
 	const {
@@ -44,16 +51,26 @@ export default function Edit( { attributes, setAttributes } ) {
 	);
 
 	const iconContainerClasses = classnames(
-		'icon-container',
+		`${ CSS_CLASS_PREFIX }__container`,
+		iconPaddingClasses
+	);
+
+	const iconClasses = classnames(
+		`${ CSS_CLASS_PREFIX }__icon`,
 		iconSizeClasses,
 		{
 			'*:fill-current': iconOverriddeFill,
 		}
 	);
 
-	const blockPropsClasses = classnames( iconPaddingClasses, {
+	const blockPropsClasses = classnames( {
 		'w-fit': iconFromAttributes,
 	} );
+
+	const iconStyles = {
+		color: iconColor,
+		background: iconBackground,
+	};
 
 	// Set up block props.
 	const blockProps = useBlockProps( {
@@ -77,7 +94,9 @@ export default function Edit( { attributes, setAttributes } ) {
 					isSVGUploadAllowed={ isSVGUploadAllowed }
 				/>
 			) : (
-				<div className={ iconContainerClasses }>{ printedIcon }</div>
+				<div className={ iconContainerClasses } style={ iconStyles }>
+					<div className={ iconClasses }>{ printedIcon }</div>
+				</div>
 			) }
 		</>
 	);

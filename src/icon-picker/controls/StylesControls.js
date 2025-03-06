@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import styled from '@emotion/styled';
 import { __, sprintf } from '@wordpress/i18n';
-import { InspectorControls } from '@wordpress/block-editor';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { BREAKPOINTS, SPACING_OPTIONS } from '@config/constants';
 import {
 	SelectControl,
@@ -12,7 +12,14 @@ import {
 } from '@wordpress/components';
 
 const StylesControls = ( { attributes, setAttributes } ) => {
-	const { iconPadding, iconSize, iconOverriddeFill } = attributes;
+	const {
+		iconPadding,
+		iconSize,
+		iconColor,
+		iconBackground,
+		iconOverriddeFill,
+	} = attributes;
+
 	const handleResetPadding = () => {
 		setAttributes( {
 			iconPadding: {
@@ -25,6 +32,7 @@ const StylesControls = ( { attributes, setAttributes } ) => {
 			},
 		} );
 	};
+
 	const handleResetSize = () => {
 		setAttributes( {
 			iconSize: {
@@ -37,13 +45,40 @@ const StylesControls = ( { attributes, setAttributes } ) => {
 			},
 		} );
 	};
-	const PanelDescription = styled.div`
+
+	const ControlWrapper = styled.div`
 		grid-column: span 2;
 	`;
+
 	return (
 		<>
-			<InspectorControls group="color">
-				<PanelDescription>
+			<InspectorControls group="styles">
+				<PanelColorSettings
+					// @ts-ignore
+					__experimentalIsRenderedInSidebar
+					title={ __( 'Color', 'tt-theme-blocks' ) }
+					colorSettings={ [
+						{
+							value: iconColor,
+							onChange: ( color ) =>
+								setAttributes( { iconColor: color } ),
+							label: __( 'Text', 'tt-theme-blocks' ),
+						},
+						{
+							value: iconBackground,
+							onChange: ( color ) =>
+								setAttributes( { iconBackground: color } ),
+							label: __( 'Background', 'tt-theme-blocks' ),
+						},
+					] }
+				/>
+				<div className="p-4 pt-0 space-y-4">
+					<Text variant="muted">
+						{ __(
+							'Any color or fill values in the SVG icon itself will take precedent over the chosen color.',
+							'tt-theme-blocks'
+						) }
+					</Text>
 					<ToggleControl
 						__nextHasNoMarginBottom
 						checked={ iconOverriddeFill }
@@ -61,21 +96,21 @@ const StylesControls = ( { attributes, setAttributes } ) => {
 							} )
 						}
 					/>
-				</PanelDescription>
+				</div>
 			</InspectorControls>
 			<InspectorControls group="styles">
 				<ToolsPanel
-					label={ __( 'Icon padding', 'tt-theme-blocks' ) }
+					label={ __( 'Padding', 'tt-theme-blocks' ) }
 					resetAll={ handleResetPadding }
 				>
-					<PanelDescription>
+					<ControlWrapper>
 						<Text variant="muted">
 							{ __(
 								'Adjust icon padding for different breakpoints. This allows you to control the spacing around the icon on various screen sizes.',
 								'tt-theme-blocks'
 							) }
 						</Text>
-					</PanelDescription>
+					</ControlWrapper>
 					{ BREAKPOINTS.map(
 						( { key, label, attribute, description: help } ) => (
 							<ToolsPanelItem
@@ -121,17 +156,17 @@ const StylesControls = ( { attributes, setAttributes } ) => {
 					) }
 				</ToolsPanel>
 				<ToolsPanel
-					label={ __( 'Icon size', 'tt-theme-blocks' ) }
+					label={ __( 'Size', 'tt-theme-blocks' ) }
 					resetAll={ handleResetSize }
 				>
-					<PanelDescription>
+					<ControlWrapper>
 						<Text variant="muted">
 							{ __(
 								'Adjust the size of the icon for different breakpoints. This allows you to control the appearance of the icon on various screen sizes.',
 								'tt-theme-blocks'
 							) }
 						</Text>
-					</PanelDescription>
+					</ControlWrapper>
 					{ BREAKPOINTS.map(
 						( { key, label, attribute, description: help } ) => (
 							<ToolsPanelItem

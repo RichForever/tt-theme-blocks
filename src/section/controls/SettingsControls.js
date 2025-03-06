@@ -13,13 +13,15 @@ import {
 import { __ } from '@wordpress/i18n';
 
 const SettingsControls = ( { attributes, setAttributes } ) => {
-	const { htmlElementType, layoutType } = attributes;
+	const { sectionHtmlElement, sectionLayout } = attributes;
+
 	const handleResetSettings = () =>
 		setAttributes( {
-			layoutType: 'fullwidth',
-			htmlElementType: 'section',
+			sectionLayout: 'fullwidth',
+			sectionHtmlElement: 'section',
 		} );
-	const PanelDescription = styled.div`
+
+	const ControlWrapper = styled.div`
 		grid-column: span 2;
 	`;
 	return (
@@ -28,30 +30,34 @@ const SettingsControls = ( { attributes, setAttributes } ) => {
 				label={ __( 'Settings', 'tt-theme-blocks' ) }
 				resetAll={ handleResetSettings }
 			>
-				<PanelDescription>
+				<ControlWrapper>
 					<Text variant="muted">
 						{ __(
 							'Customize the layout type and HTML element for your section to adapt to different design requirements.',
 							'tt-theme-blocks'
 						) }
 					</Text>
-				</PanelDescription>
+				</ControlWrapper>
 				<ToolsPanelItem
 					label={ __( 'Layout type', 'tt-theme-blocks' ) }
-					hasValue={ () => !! layoutType }
+					hasValue={ () => !! sectionLayout }
 					onDeselect={ () =>
-						setAttributes( { layoutType: 'fullwidth' } )
+						setAttributes( { sectionLayout: 'fullwidth' } )
 					}
 				>
 					<ToggleGroupControl
 						label={ __( 'Layout type', 'tt-theme-blocks' ) }
-						value={ layoutType }
+						help={ __(
+							"Select the layout type for your section. 'Full width' spans the entire viewport, while 'Boxed' constrains the section within a container.",
+							'tt-theme-blocks'
+						) }
+						value={ sectionLayout }
 						isBlock
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
 						onChange={ ( val ) =>
 							setAttributes( {
-								layoutType: val,
+								sectionLayout: val,
 							} )
 						}
 					>
@@ -67,19 +73,23 @@ const SettingsControls = ( { attributes, setAttributes } ) => {
 				</ToolsPanelItem>
 				<ToolsPanelItem
 					label={ __( 'HTML Element', 'tt-theme-blocks' ) }
-					hasValue={ () => !! htmlElementType }
+					hasValue={ () => !! sectionHtmlElement }
 					onDeselect={ () =>
-						setAttributes( { htmlElementType: 'section' } )
+						setAttributes( { sectionHtmlElement: 'section' } )
 					}
 				>
 					<SelectControl
 						label={ __( 'HTML Element', 'tt-theme-blocks' ) }
-						value={ htmlElementType }
+						help={ __(
+							'Select the HTML element to use for your section. This determines the semantic meaning and structure of your content.',
+							'tt-theme-blocks'
+						) }
+						value={ sectionHtmlElement }
 						options={ HTML_ELEMENTS_OPTIONS }
 						__nextHasNoMarginBottom
 						onChange={ ( val ) =>
 							setAttributes( {
-								htmlElementType: val,
+								sectionHtmlElement: val,
 							} )
 						}
 					/>

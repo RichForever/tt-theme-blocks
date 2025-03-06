@@ -110,7 +110,7 @@ export const BLOCK_DEFAULTS = {
 		},
 	},
 	SECTION: {
-		padding: {
+		sectionPadding: {
 			xs: '-',
 			sm: '-',
 			md: '-',
@@ -118,8 +118,8 @@ export const BLOCK_DEFAULTS = {
 			xl: '-',
 			'2xl': '-',
 		},
-		layoutType: 'fullwidth',
-		htmlElementType: 'section',
+		sectionLayout: 'fullwidth',
+		sectionHtmlElement: 'section',
 	},
 };
 

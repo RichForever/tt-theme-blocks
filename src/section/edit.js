@@ -10,18 +10,23 @@ import SettingsControls from './controls/SettingsControls';
 import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { htmlElementType, layoutType } = attributes;
+	const { sectionHtmlElement, sectionLayout, sectionBackground } = attributes;
 
 	// Generate Tailwind classes.
 	const { paddingClasses } = useTailwindClasses( attributes, {
 		paddingPrefix: 'py',
 	} );
 
-	const Tag = htmlElementType;
+	const sectionStyles = {
+		background: sectionBackground,
+	};
+
+	const Tag = sectionHtmlElement;
 
 	// Set up block props.
 	const blockProps = useBlockProps( {
 		className: paddingClasses,
+		style: sectionStyles,
 	} );
 
 	const INNER_BLOCKS_SECTION_TEMPLATE = [
@@ -48,7 +53,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			/>
 
 			<Tag { ...blockProps }>
-				{ layoutType === 'boxed' ? (
+				{ sectionLayout === 'boxed' ? (
 					<div className="container mx-auto">
 						<div className="border border-red-500 border-dotted">
 							<InnerBlocks

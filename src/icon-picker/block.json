@@ -34,15 +34,17 @@
 				"2xl": "-"
 			}
 		},
+		"iconColor": {
+			"type": "string",
+			"default": ""
+		},
+		"iconBackground": {
+			"type": "string",
+			"default": ""
+		},
 		"iconOverriddeFill": {
 			"type": "boolean",
 			"default": false
-		}
-	},
-	"supports": {
-		"color": {
-			"background": true,
-			"text": true
 		}
 	},
 	"textdomain": "tt-theme-blocks",
