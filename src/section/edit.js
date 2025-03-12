@@ -27,12 +27,12 @@ export default function Edit( { attributes, setAttributes } ) {
 	const ref = useRef();
 
 	useEffect( () => {
+		const ELEMENT_CSS_CLASS = 'block-editor-block-list__layout';
 		// @ts-ignore
 		const el = ref.current.querySelector(
-			`#${ blockProps.id } .block-editor-block-list__layout`
+			`#${ blockProps.id } .${ ELEMENT_CSS_CLASS }`
 		);
-		const ELEMENT_CLASS = 'block-editor-block-list__layout';
-		const elClasses = classnames( ELEMENT_CLASS, spacingClasses );
+		const elClasses = classnames( ELEMENT_CSS_CLASS, spacingClasses );
 
 		el.className = elClasses;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
