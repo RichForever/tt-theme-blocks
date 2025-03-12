@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.13](https://github.com/RichForever/tt-theme-blocks/compare/1.5.12...1.5.13) (2025-03-12)
+
+### ♻️ Refactoring
+
+* add spacing option in section block ([175a13c](https://github.com/RichForever/tt-theme-blocks/commit/175a13c8d1b6df74833398c582c34b242fc4fab2))
+* rename variable ([3732287](https://github.com/RichForever/tt-theme-blocks/commit/37322877c0aacbb838adb8a9c771bd01292cc26b))
+
 ## [1.5.12](https://github.com/RichForever/tt-theme-blocks/compare/1.5.11...1.5.12) (2025-03-06)
 
 ### ♻️ Refactoring
