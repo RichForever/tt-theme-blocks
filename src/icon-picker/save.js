@@ -1,22 +1,26 @@
-import { useTailwindClasses } from '@hooks';
-import { useIconParser } from './hooks/useIconParser';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import classnames from 'classnames';
+import { useTailwindClasses } from '@hooks';
+
 import { useBlockProps } from '@wordpress/block-editor';
+
+import { useIconParser } from './hooks/useIconParser';
 
 const CSS_CLASS_PREFIX = 'wp-block-tt-theme-blocks-icon-picker';
 
 export default function Save( { attributes } ) {
-	const { icon, iconOverriddeFill, iconColor, iconBackground } = attributes;
+	const {
+		icon,
+		iconPadding,
+		iconSize,
+		iconOverriddeFill,
+		iconColor,
+		iconBackground,
+	} = attributes;
 	const printedIcon = useIconParser( icon );
 
 	// Generate Tailwind classes.
-	const { iconPaddingClasses, iconSizeClasses } = useTailwindClasses(
-		attributes,
-		{
-			includeSize: true,
-		}
-	);
+	const iconPaddingClasses = useTailwindClasses( 'p', iconPadding );
+	const iconSizeClasses = useTailwindClasses( 'size', iconSize );
 
 	// Early return if there is no valid icon.
 	if ( ! icon || ! printedIcon ) {

@@ -1,45 +1,21 @@
-import { BREAKPOINTS } from '@config/constants';
-import { PADDING_CLASSES, SIZE_CLASSES } from '@utils/cls';
+export const useTailwindClasses = ( prefix, attribute ) => {
+	if ( ! prefix || ! attribute || typeof attribute !== 'object' ) {
+		// eslint-disable-next-line no-console
+		console.error(
+			'Invalid parameters provided to generateTailwindClasses'
+		);
+		return '';
+	}
 
-/**
- * Generates Tailwind classes for padding and size based on attributes.
- * @param {Object}  attributes            - The block attributes.
- * @param {Object}  options               - Options for class generation.
- * @param {string}  options.paddingPrefix - Prefix for padding classes (e.g., 'p' or 'py').
- * @param {boolean} options.includeSize   - Whether to include size classes.
- * @return {Object} - An object containing classes based on the options provided.
- */
-export const useTailwindClasses = (
-	attributes,
-	options = { paddingPrefix: '', includeSize: false }
-) => {
-	const { sectionPadding = attributes.iconPadding, iconSize } = attributes;
-	const { paddingPrefix = 'p', includeSize = false } = options;
-
-	const paddingClasses = BREAKPOINTS.reduce( ( classes, { key } ) => {
-		const value = sectionPadding?.[ key ];
-		if ( value && PADDING_CLASSES[ value ]?.[ key ] ) {
-			classes.push(
-				PADDING_CLASSES[ value ][ key ].replace(
-					'p-',
-					`${ paddingPrefix }-`
-				)
-			);
-		}
-		return classes;
-	}, [] ).join( ' ' );
-
-	const sizeClasses = includeSize
-		? BREAKPOINTS.reduce( ( classes, { key } ) => {
-				const value = iconSize?.[ key ];
-				if ( value && SIZE_CLASSES[ value ]?.[ key ] ) {
-					classes.push( SIZE_CLASSES[ value ][ key ] );
-				}
-				return classes;
-		  }, [] ).join( ' ' )
-		: '';
-
-	return includeSize
-		? { iconPaddingClasses: paddingClasses, iconSizeClasses: sizeClasses }
-		: { paddingClasses };
+	return (
+		Object.entries( attribute )
+			// eslint-disable-next-line no-unused-vars
+			.filter( ( [ key, value ] ) => value !== '-' ) // Skip "None" values
+			.map( ( [ key, value ] ) => {
+				return key === 'xs'
+					? `${ prefix }-${ value }`
+					: `${ key }:${ prefix }-${ value }`;
+			} )
+			.join( ' ' )
+	);
 };

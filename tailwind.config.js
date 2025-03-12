@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: [ './src/**/*.{js,jsx,ts,tsx,php}' ],
+	content: [ './src/**/*.{js,jsx,ts,tsx,php}', './hooks/*.js' ],
 	theme: {
 		extend: {
 			container: {
@@ -21,6 +21,10 @@ module.exports = {
 		},
 		{
 			pattern: /^size-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
+			pattern: /^space-y-/,
 			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
 		},
 	],

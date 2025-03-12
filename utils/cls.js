@@ -1,10 +1,17 @@
 import { BREAKPOINTS, SPACING_OPTIONS } from '@config/constants';
 
-const generateTailwindClasses = ( prefix, options, breakpoints ) => {
+/**
+ * Generates Tailwind classes for a given prefix and attributes.
+ * @param {string} prefix     - The Tailwind prefix (e.g., 'p', 'py', 'space-y').
+ * @param {Object} attributes - The block attributes containing values for each breakpoint.
+ * @return {string} - A string of Tailwind classes.
+ */
+
+export const generateTailwindClasses = ( prefix ) => {
 	if (
 		! prefix ||
-		! Array.isArray( options ) ||
-		! Array.isArray( breakpoints )
+		! Array.isArray( SPACING_OPTIONS ) ||
+		! Array.isArray( BREAKPOINTS )
 	) {
 		// eslint-disable-next-line no-console
 		console.error(
@@ -13,12 +20,13 @@ const generateTailwindClasses = ( prefix, options, breakpoints ) => {
 		return {};
 	}
 
-	return options.reduce( ( acc, { value } ) => {
-		// eslint-disable-next-line curly
-		if ( value === '-' ) return acc; // Skip "None" option
+	return SPACING_OPTIONS.reduce( ( acc, { value } ) => {
+		if ( value === '-' ) {
+			return acc;
+		} // Skip "None" option
 
 		try {
-			acc[ value ] = breakpoints.reduce( ( classes, { key } ) => {
+			acc[ value ] = BREAKPOINTS.reduce( ( classes, { key } ) => {
 				classes[ key ] =
 					key === 'xs'
 						? `${ prefix }-${ value }`
@@ -36,25 +44,3 @@ const generateTailwindClasses = ( prefix, options, breakpoints ) => {
 		}
 	}, {} );
 };
-
-// Generate Tailwind classes for padding, size, etc.
-export const PADDING_CLASSES = generateTailwindClasses(
-	'p',
-	SPACING_OPTIONS,
-	BREAKPOINTS
-);
-export const VERTICAL_PADDING_CLASSES = generateTailwindClasses(
-	'py',
-	SPACING_OPTIONS,
-	BREAKPOINTS
-);
-export const HORIZONTAL_PADDING_CLASSES = generateTailwindClasses(
-	'px',
-	SPACING_OPTIONS,
-	BREAKPOINTS
-);
-export const SIZE_CLASSES = generateTailwindClasses(
-	'size',
-	SPACING_OPTIONS,
-	BREAKPOINTS
-);

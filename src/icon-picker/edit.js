@@ -1,5 +1,5 @@
-// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { useTailwindClasses } from '@hooks';
+
 import {
 	useIconParser,
 	useIconPickerState,
@@ -25,6 +25,8 @@ const CSS_CLASS_PREFIX = 'wp-block-tt-theme-blocks-icon-picker';
 export default function Edit( { attributes, setAttributes } ) {
 	const {
 		icon: iconFromAttributes,
+		iconPadding,
+		iconSize,
 		iconOverriddeFill,
 		iconColor,
 		iconBackground,
@@ -43,12 +45,8 @@ export default function Edit( { attributes, setAttributes } ) {
 	const printedIcon = useIconParser( iconFromAttributes ) || '';
 
 	// Generate Tailwind classes.
-	const { iconPaddingClasses, iconSizeClasses } = useTailwindClasses(
-		attributes,
-		{
-			includeSize: true,
-		}
-	);
+	const iconPaddingClasses = useTailwindClasses( 'p', iconPadding );
+	const iconSizeClasses = useTailwindClasses( 'size', iconSize );
 
 	const iconContainerClasses = classnames(
 		`${ CSS_CLASS_PREFIX }__container`,

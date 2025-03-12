@@ -27,6 +27,17 @@
 				"2xl": "-"
 			}
 		},
+		"sectionSpacing": {
+			"type": "object",
+			"default": {
+				"xs": "-",
+				"sm": "-",
+				"md": "-",
+				"lg": "-",
+				"xl": "-",
+				"2xl": "-"
+			}
+		},
 		"sectionBackground": {
 			"type": "string",
 			"default": ""

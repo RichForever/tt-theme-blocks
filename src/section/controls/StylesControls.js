@@ -11,11 +11,24 @@ import {
 } from '@wordpress/components';
 
 const StylesControls = ( { attributes, setAttributes } ) => {
-	const { sectionPadding, sectionBackground } = attributes;
+	const { sectionPadding, sectionSpacing, sectionBackground } = attributes;
 
 	const handleResetPadding = () => {
 		setAttributes( {
 			sectionPadding: {
+				xs: '-',
+				sm: '-',
+				md: '-',
+				lg: '-',
+				xl: '-',
+				'2xl': '-',
+			},
+		} );
+	};
+
+	const handleResetSpacing = () => {
+		setAttributes( {
+			sectionSpacing: {
 				xs: '-',
 				sm: '-',
 				md: '-',
@@ -91,6 +104,61 @@ const StylesControls = ( { attributes, setAttributes } ) => {
 									setAttributes( {
 										sectionPadding: {
 											...( sectionPadding || {} ),
+											[ attribute ]: String( newValue ),
+										},
+									} )
+								}
+							/>
+						</ToolsPanelItem>
+					)
+				) }
+			</ToolsPanel>
+			<ToolsPanel
+				label={ __( 'Spacing', 'tt-theme-blocks' ) }
+				resetAll={ handleResetSpacing }
+			>
+				<ControlWrapper>
+					<Text variant="muted">
+						{ __(
+							'Adjust the vertical padding for different breakpoints. This allows you to control the spacing around the section on various screen sizes.',
+							'tt-theme-blocks'
+						) }
+					</Text>
+				</ControlWrapper>
+				{ BREAKPOINTS.map(
+					( { key, label, attribute, description: help } ) => (
+						<ToolsPanelItem
+							key={ key }
+							label={ label }
+							hasValue={ () => !! sectionSpacing }
+							onDeselect={ () =>
+								setAttributes( {
+									sectionSpacing: {
+										...( sectionSpacing || {} ),
+										[ attribute ]: '-',
+									},
+								} )
+							}
+						>
+							<SelectControl
+								key={ key }
+								label={ sprintf(
+									// translators: %s: padding position (e.g., "Top", "Bottom", "Left", "Right")
+									__( '%s breakpoint', 'tt-theme-blocks' ),
+									label
+								) }
+								help={ help }
+								value={
+									( sectionSpacing &&
+										sectionSpacing[ attribute ] ) ||
+									''
+								}
+								options={ SPACING_OPTIONS }
+								__nextHasNoMarginBottom
+								onChange={ ( newValue ) =>
+									setAttributes( {
+										sectionSpacing: {
+											...( sectionSpacing || {} ),
 											[ attribute ]: String( newValue ),
 										},
 									} )
