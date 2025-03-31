@@ -38,22 +38,9 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 		} );
 	};
 
-	const handleResetPadding = () => {
+	const handleResetAttributes = ( atttributeName ) => {
 		setAttributes( {
-			sectionPadding: {
-				xs: '-',
-				sm: '-',
-				md: '-',
-				lg: '-',
-				xl: '-',
-				'2xl': '-',
-			},
-		} );
-	};
-
-	const handleResetSpacing = () => {
-		setAttributes( {
-			sectionSpacing: {
+			[ atttributeName ]: {
 				xs: '-',
 				sm: '-',
 				md: '-',
@@ -245,7 +232,9 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 						<Button
 							isDestructive
 							variant="link"
-							onClick={ handleResetPadding }
+							onClick={ () =>
+								handleResetAttributes( 'sectionPadding' )
+							}
 						>
 							{ __( 'Reset', 'tt-theme-blocks' ) }
 						</Button>
@@ -307,7 +296,9 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 						<Button
 							isDestructive
 							variant="link"
-							onClick={ handleResetSpacing }
+							onClick={ () =>
+								handleResetAttributes( 'sectionSpacing' )
+							}
 						>
 							{ __( 'Reset', 'tt-theme-blocks' ) }
 						</Button>

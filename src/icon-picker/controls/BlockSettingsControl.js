@@ -21,22 +21,9 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 		iconOverriddeFill,
 	} = attributes;
 
-	const handleResetPadding = () => {
+	const handleResetAttributes = ( atttributeName ) => {
 		setAttributes( {
-			iconPadding: {
-				xs: '-',
-				sm: '-',
-				md: '-',
-				lg: '-',
-				xl: '-',
-				'2xl': '-',
-			},
-		} );
-	};
-
-	const handleResetSize = () => {
-		setAttributes( {
-			iconSize: {
+			[ atttributeName ]: {
 				xs: '-',
 				sm: '-',
 				md: '-',
@@ -185,7 +172,9 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 							<Button
 								isDestructive
 								variant="link"
-								onClick={ handleResetPadding }
+								onClick={ () =>
+									handleResetAttributes( 'iconPadding' )
+								}
 							>
 								{ __( 'Reset', 'tt-theme-blocks' ) }
 							</Button>
@@ -247,7 +236,9 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 							<Button
 								isDestructive
 								variant="link"
-								onClick={ handleResetSize }
+								onClick={ () =>
+									handleResetAttributes( 'iconSize' )
+								}
 							>
 								{ __( 'Reset', 'tt-theme-blocks' ) }
 							</Button>
