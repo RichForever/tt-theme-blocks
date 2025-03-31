@@ -6,8 +6,7 @@ import { __ } from '@wordpress/i18n';
 import { useEffect, useRef } from '@wordpress/element';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
-import StylesControls from './controls/StylesControls';
-import SettingsControls from './controls/SettingsControls';
+import BlockSettingsControls from './controls/BlockSettingsControls';
 
 import './editor.scss';
 
@@ -74,11 +73,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	return (
 		<>
-			<SettingsControls
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-			/>
-			<StylesControls
+			<BlockSettingsControls
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>

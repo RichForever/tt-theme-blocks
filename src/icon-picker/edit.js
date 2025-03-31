@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
 import { ToolbarButton } from '@wordpress/components';
 import { BlockControls, useBlockProps } from '@wordpress/block-editor';
 
-import StylesControls from './controls/StylesControls';
+import BlockSettingsControls from './controls/BlockSettingsControl';
 import IconInserterModal from './components/IconInserterModal';
 
 import IconInserterPlaceholder from './components/IconInserterPlaceholder';
@@ -116,7 +116,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					</ToolbarButton>
 				) }
 			</BlockControls>
-			<StylesControls
+			<BlockSettingsControls
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>
