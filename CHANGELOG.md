@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.14](https://github.com/RichForever/tt-theme-blocks/compare/1.5.13...1.5.14) (2025-03-31)
+
+### ♻️ Refactoring
+
+* switch settings definition to panels ([d05be5a](https://github.com/RichForever/tt-theme-blocks/commit/d05be5a7cc8f44d8d58b6e3bdcde5ae7eecd1428))
+* utilize reset methods ([81e48ab](https://github.com/RichForever/tt-theme-blocks/commit/81e48ab62059f7b2349d0a981289660232295beb))
+
 ## [1.5.13](https://github.com/RichForever/tt-theme-blocks/compare/1.5.12...1.5.13) (2025-03-12)
 
 ### ♻️ Refactoring
