@@ -1,11 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { __, sprintf } from '@wordpress/i18n';
-import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import {
 	BREAKPOINTS,
 	HTML_ELEMENTS_OPTIONS,
 	SPACING_OPTIONS,
 } from '@config/constants';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import {
 	Button,
 	Panel,
@@ -16,6 +15,7 @@ import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
+import { __, sprintf } from '@wordpress/i18n';
 
 const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 	const {
@@ -54,11 +54,14 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 	return (
 		<InspectorControls>
 			<Panel>
-				<PanelBody title="Layout" initialOpen={ false }>
+				<PanelBody
+					title={ __( 'Layout', 'tt-theme-blocks' ) }
+					initialOpen={ false }
+				>
 					<PanelRow>
 						<Text variant="muted">
 							{ __(
-								'Customize the layout type for your section to adapt to different design requirements.',
+								'Configure how your section spans across the page. Choose between full-width layouts that extend to the edges of the screen or boxed layouts that maintain content within a contained area.',
 								'tt-theme-blocks'
 							) }
 						</Text>
@@ -102,11 +105,14 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 				</PanelBody>
 			</Panel>
 			<Panel>
-				<PanelBody title="HTML Element" initialOpen={ false }>
+				<PanelBody
+					title={ __( 'HTML Element', 'tt-theme-blocks' ) }
+					initialOpen={ false }
+				>
 					<PanelRow>
 						<Text variant="muted">
 							{ __(
-								'Customize HTML element for your section to adapt to different design requirements.',
+								'Select the appropriate HTML element for your section to ensure proper semantic structure. Different elements provide different accessibility benefits and styling capabilities.',
 								'tt-theme-blocks'
 							) }
 						</Text>
@@ -140,11 +146,14 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 				</PanelBody>
 			</Panel>
 			<Panel>
-				<PanelBody title="Colors" initialOpen={ false }>
+				<PanelBody
+					title={ __( 'Colors', 'tt-theme-blocks' ) }
+					initialOpen={ false }
+				>
 					<PanelRow>
 						<Text variant="muted">
 							{ __(
-								'Adjust icon padding for different breakpoints. This allows you to control the spacing around the icon on various screen sizes.',
+								"Customize the background color of your section to create visual separation between content areas or to match your site's color scheme.",
 								'tt-theme-blocks'
 							) }
 						</Text>
@@ -178,11 +187,14 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 				</PanelBody>
 			</Panel>
 			<Panel>
-				<PanelBody title="Padding" initialOpen={ false }>
+				<PanelBody
+					title={ __( 'Padding', 'tt-theme-blocks' ) }
+					initialOpen={ false }
+				>
 					<PanelRow>
 						<Text variant="muted">
 							{ __(
-								'Adjust the vertical padding for different breakpoints. This allows you to control the spacing around the section on various screen sizes.',
+								"Adjust the internal spacing of your section for each screen size. Proper padding ensures content doesn't feel cramped and maintains visual hierarchy across devices.",
 								'tt-theme-blocks'
 							) }
 						</Text>
@@ -242,11 +254,14 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 				</PanelBody>
 			</Panel>
 			<Panel>
-				<PanelBody title="Spacing" initialOpen={ false }>
+				<PanelBody
+					title={ __( 'Spacing', 'tt-theme-blocks' ) }
+					initialOpen={ false }
+				>
 					<PanelRow>
 						<Text variant="muted">
 							{ __(
-								'Adjust the vertical padding for different breakpoints. This allows you to control the spacing around the section on various screen sizes.',
+								'Control the vertical spacing between this section and adjacent content. This helps create rhythm in your page layout and improves readability across different devices.',
 								'tt-theme-blocks'
 							) }
 						</Text>

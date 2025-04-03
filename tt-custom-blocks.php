@@ -42,3 +42,19 @@ add_filter( 'block_categories_all' , function( $categories ) {
 
 	return $categories;
 } );
+
+
+ /**
+ * Enqueue Editor scripts.
+ */
+function tt_custom_core_blocks_extender_enqueue_block_editor_assets() {
+	$asset_file = include plugin_dir_path( __FILE__ ) . 'build/core-extender.asset.php';
+
+	wp_enqueue_script(
+		'tt-custom-blocks-editor-scripts',
+		plugin_dir_url( __FILE__ ) . 'build/core-extender.js',
+		$asset_file['dependencies'],
+		$asset_file['version']
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'tt_custom_core_blocks_extender_enqueue_block_editor_assets' );

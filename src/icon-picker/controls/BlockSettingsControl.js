@@ -1,16 +1,16 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { __, sprintf } from '@wordpress/i18n';
-import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { BREAKPOINTS, SPACING_OPTIONS } from '@config/constants';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import {
-	SelectControl,
-	ToggleControl,
-	__experimentalText as Text,
+	Button,
 	Panel,
 	PanelBody,
 	PanelRow,
-	Button,
+	SelectControl,
+	__experimentalText as Text,
+	ToggleControl,
 } from '@wordpress/components';
+import { __, sprintf } from '@wordpress/i18n';
 
 const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 	const {
@@ -38,11 +38,14 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 		<>
 			<InspectorControls>
 				<Panel>
-					<PanelBody title="Colors" initialOpen={ false }>
+					<PanelBody
+						title={ __( 'Colors', 'tt-theme-blocks' ) }
+						initialOpen={ false }
+					>
 						<PanelRow>
 							<Text variant="muted">
 								{ __(
-									'Adjust icon padding for different breakpoints. This allows you to control the spacing around the icon on various screen sizes.',
+									"Customize the icon's appearance by setting its color and background. This helps integrate the icon with your site's design language and improves visual consistency.",
 									'tt-theme-blocks'
 								) }
 							</Text>
@@ -88,7 +91,7 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 							<div className="space-y-4">
 								<Text variant="muted">
 									{ __(
-										'Any color or fill values in the SVG icon itself will take precedent over the chosen color.',
+										'SVG icons may contain their own color definitions. Enable this option to override those colors with your selected color settings for better design consistency.',
 										'tt-theme-blocks'
 									) }
 								</Text>
@@ -115,11 +118,14 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 					</PanelBody>
 				</Panel>
 				<Panel>
-					<PanelBody title="Padding" initialOpen={ false }>
+					<PanelBody
+						title={ __( 'Padding', 'tt-theme-blocks' ) }
+						initialOpen={ false }
+					>
 						<PanelRow>
 							<Text variant="muted">
 								{ __(
-									'Adjust icon padding for different breakpoints. This allows you to control the spacing around the icon on various screen sizes.',
+									'Adjust the space around your icon for each screen size. Proper padding ensures the icon has enough breathing room and maintains visual balance within your layout.',
 									'tt-theme-blocks'
 								) }
 							</Text>
@@ -182,11 +188,14 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 					</PanelBody>
 				</Panel>
 				<Panel>
-					<PanelBody title="Size" initialOpen={ false }>
+					<PanelBody
+						title={ __( 'Size', 'tt-theme-blocks' ) }
+						initialOpen={ false }
+					>
 						<PanelRow>
 							<Text variant="muted">
 								{ __(
-									'Adjust the size of the icon for different breakpoints. This allows you to control the appearance of the icon on various screen sizes.',
+									'Control the dimensions of your icon across different devices. Responsive sizing ensures your icon remains proportional and visually appropriate at all screen sizes.',
 									'tt-theme-blocks'
 								) }
 							</Text>
