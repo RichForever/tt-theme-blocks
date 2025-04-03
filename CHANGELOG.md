@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.0](https://github.com/RichForever/tt-theme-blocks/compare/1.5.14...1.6.0) (2025-04-03)
+
+### 🚀 Features
+
+* add core block exnted mechanism ([e4ab374](https://github.com/RichForever/tt-theme-blocks/commit/e4ab3747dec0c3834e238d1b59da6e4b54c37002))
+
 ## [1.5.14](https://github.com/RichForever/tt-theme-blocks/compare/1.5.13...1.5.14) (2025-03-31)
 
 ### ♻️ Refactoring
