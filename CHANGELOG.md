@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.1](https://github.com/RichForever/tt-theme-blocks/compare/1.6.0...1.6.1) (2025-04-10)
+
+### 📦 Miscellaneous
+
+* add git action file ([f6ff0bd](https://github.com/RichForever/tt-theme-blocks/commit/f6ff0bddfb6bb48ac62cf616c776459c2b7bb2b7))
+
 ## [1.6.0](https://github.com/RichForever/tt-theme-blocks/compare/1.5.14...1.6.0) (2025-04-03)
 
 ### 🚀 Features
