@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.3](https://github.com/RichForever/tt-theme-blocks/compare/1.6.2...1.6.3) (2025-04-10)
+
+### ♻️ Refactoring
+
+* add build step ([5df5a05](https://github.com/RichForever/tt-theme-blocks/commit/5df5a05b33d82f0748916328ace668174815f10d))
+
 ## [1.6.2](https://github.com/RichForever/tt-theme-blocks/compare/1.6.1...1.6.2) (2025-04-10)
 
 ### ♻️ Refactoring
