@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.4](https://github.com/RichForever/tt-theme-blocks/compare/1.6.3...1.6.4) (2025-04-10)
+
+### ♻️ Refactoring
+
+* remove some in upload plugin zip step ([58e676c](https://github.com/RichForever/tt-theme-blocks/commit/58e676c36f125cb82117c80481405a3370506b76))
+
 ## [1.6.3](https://github.com/RichForever/tt-theme-blocks/compare/1.6.2...1.6.3) (2025-04-10)
 
 ### ♻️ Refactoring
