@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.7.1](https://github.com/RichForever/tt-theme-blocks/compare/1.7.0...1.7.1) (2025-04-10)
+
+### ♻️ Refactoring
+
+* remove playground files ([932acbb](https://github.com/RichForever/tt-theme-blocks/commit/932acbb80f9b6cfeed8be81f3468ccaee3d36057))
+
 ## [1.7.0](https://github.com/RichForever/tt-theme-blocks/compare/1.6.5...1.7.0) (2025-04-10)
 
 ### 🚀 Features
