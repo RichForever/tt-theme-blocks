@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.2](https://github.com/RichForever/tt-theme-blocks/compare/1.6.1...1.6.2) (2025-04-10)
+
+### ♻️ Refactoring
+
+* changed artifact version ([a84dc43](https://github.com/RichForever/tt-theme-blocks/commit/a84dc4352b5ff56812911a5f7217e3c1fa178cc8))
+
 ## [1.6.1](https://github.com/RichForever/tt-theme-blocks/compare/1.6.0...1.6.1) (2025-04-10)
 
 ### 📦 Miscellaneous
