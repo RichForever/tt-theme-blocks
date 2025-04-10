@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.5](https://github.com/RichForever/tt-theme-blocks/compare/1.6.4...1.6.5) (2025-04-10)
+
+### ♻️ Refactoring
+
+* change artifact name ([3975eb3](https://github.com/RichForever/tt-theme-blocks/commit/3975eb33b772b80d2f9c93ddc221a098913df59c))
+
 ## [1.6.4](https://github.com/RichForever/tt-theme-blocks/compare/1.6.3...1.6.4) (2025-04-10)
 
 ### ♻️ Refactoring
