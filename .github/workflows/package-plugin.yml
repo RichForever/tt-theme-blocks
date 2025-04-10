@@ -29,6 +29,3 @@ jobs:
 
       - name: Upload plugin zip
         uses: actions/upload-artifact@v4
-        with:
-          name: plugin-package
-          path: "*.zip"
