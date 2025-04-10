@@ -22,10 +22,19 @@ jobs:
         run: npm i
 
       - name: Build plugin
-        run: npm run build        
+        run: npm run build
 
       - name: Create plugin zip
         run: npm run plugin-zip
 
+      - name: Get package info
+        id: package
+        run: |
+          echo "name=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
+          echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
       - name: Upload plugin zip
         uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.package.outputs.name }}-${{ steps.package.outputs.version }}
+          path: "*.zip"
