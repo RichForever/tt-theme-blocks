@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.8.0](https://github.com/RichForever/tt-theme-blocks/compare/1.7.1...1.8.0) (2025-05-27)
+
+### 🚀 Features
+
+* block refactors, introduce new elements ([5b56893](https://github.com/RichForever/tt-theme-blocks/commit/5b56893061a0bf17215845f0585b322890386404))
+
 ## [1.7.1](https://github.com/RichForever/tt-theme-blocks/compare/1.7.0...1.7.1) (2025-04-10)
 
 ### ♻️ Refactoring
