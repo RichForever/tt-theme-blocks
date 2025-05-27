@@ -16,6 +16,10 @@ module.exports = {
 			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
 		},
 		{
+			pattern: /^px-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
 			pattern: /^p-/,
 			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
 		},
@@ -25,6 +29,18 @@ module.exports = {
 		},
 		{
 			pattern: /^space-y-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
+			pattern: /^space-x-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
+			pattern: /^flex-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
+			pattern: /^gap-/,
 			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
 		},
 	],

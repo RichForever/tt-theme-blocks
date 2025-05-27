@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tt-theme-blocks/section",
+	"name": "tt-theme-blocks/image-and-text",
 	"version": "0.1.0",
-	"title": "Section Block",
+	"title": "Image and Text Block",
 	"category": "tt-theme-blocks-category",
 	"description": "Display custom section tag with various options",
 	"example": {},
@@ -11,7 +11,28 @@
 		"customBackground": {
 			"type": "string",
 			"default": ""
-		},
+		},		
+		"customFlex": {
+			"type": "object",
+			"default": {
+				"direction": {
+					"xs": "-",
+					"sm": "-",
+					"md": "-",
+					"lg": "-",
+					"xl": "-",
+					"2xl": "-"
+				},
+				"gap": {
+					"xs": "-",
+					"sm": "-",
+					"md": "-",
+					"lg": "-",
+					"xl": "-",
+					"2xl": "-"
+				}
+			}
+		},	
 		"customPadding": {
 			"type": "object",
 			"default": {
@@ -32,7 +53,7 @@
 					"2xl": "-"
 				}	
 			}
-		},
+		},	
 		"customSpacing": {
 			"type": "object",
 			"default": {
@@ -53,14 +74,14 @@
 					"2xl": "-"
 				}	
 			}
-		},
+		},						
 		"customHtmlTag": {
 			"type": "string",
 			"default": "section"
 		},
-		"customLayout": {
-			"type": "string",
-			"default": "fullwidth"
+		"customImage": {
+			"type": "object",
+			"default": {}
 		}
 	},
 	"textdomain": "tt-theme-blocks",

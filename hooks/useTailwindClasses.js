@@ -1,9 +1,13 @@
+/**
+ * Generates Tailwind classes from a prefix and attribute object
+ * @param {string} prefix    - The Tailwind class prefix (e.g., 'p' for padding)
+ * @param {Object} attribute - Breakpoint values (e.g., { xs: '4', md: '6' })
+ * @return {string} Generated Tailwind classes
+ */
 export const useTailwindClasses = ( prefix, attribute ) => {
 	if ( ! prefix || ! attribute || typeof attribute !== 'object' ) {
 		// eslint-disable-next-line no-console
-		console.error(
-			'Invalid parameters provided to generateTailwindClasses'
-		);
+		console.error( 'Invalid parameters provided to useTailwindClasses' );
 		return '';
 	}
 

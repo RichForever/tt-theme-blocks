@@ -5,9 +5,10 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function Save( { attributes } ) {
 	const {
+		customImage,
 		customHtmlTag,
-		customLayout,
 		customBackground,
+		customFlex,
 		customPadding,
 		customSpacing,
 	} = attributes;
@@ -30,9 +31,18 @@ export default function Save( { attributes } ) {
 		customSpacing.horizontal
 	);
 
+	const flexDirectionClasses = generateTailwindClasses(
+		'flex',
+		customFlex.direction
+	);
+
+	const flexGapClasses = generateTailwindClasses( 'gap', customFlex.gap );
+
 	const containerClasses = classnames(
-		'container',
-		'mx-auto',
+		'flex',
+		'justify-between',
+		flexDirectionClasses,
+		flexGapClasses,
 		verticalSpacingClasses,
 		horizontalSpacingClasses
 	);
@@ -56,13 +66,17 @@ export default function Save( { attributes } ) {
 
 	return (
 		<Tag { ...blockProps }>
-			{ customLayout === 'boxed' ? (
-				<div className={ containerClasses }>
+			<div className={ containerClasses }>
+				<div className="basis-full">
+					<img
+						src={ customImage.url }
+						alt={ customImage.alt || customImage.title }
+					/>
+				</div>
+				<div className="basis-full">
 					<InnerBlocks.Content />
 				</div>
-			) : (
-				<InnerBlocks.Content />
-			) }
+			</div>
 		</Tag>
 	);
 }

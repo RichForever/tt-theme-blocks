@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { useTailwindClasses } from '@hooks';
+import { generateTailwindClasses } from '@utils';
 
 import { useBlockProps } from '@wordpress/block-editor';
 
@@ -9,44 +9,53 @@ const CSS_CLASS_PREFIX = 'wp-block-tt-theme-blocks-icon-picker';
 
 export default function Save( { attributes } ) {
 	const {
-		icon,
-		iconPadding,
-		iconSize,
-		iconOverriddeFill,
-		iconColor,
-		iconBackground,
+		customIcon,
+		customSize,
+		customOverrideFill,
+		customColor,
+		customBackground,
+		customPadding,
 	} = attributes;
-	const printedIcon = useIconParser( icon );
-
-	// Generate Tailwind classes.
-	const iconPaddingClasses = useTailwindClasses( 'p', iconPadding );
-	const iconSizeClasses = useTailwindClasses( 'size', iconSize );
+	const printedIcon = useIconParser( customIcon );
 
 	// Early return if there is no valid icon.
-	if ( ! icon || ! printedIcon ) {
+	if ( ! customIcon || ! printedIcon ) {
 		return null;
 	}
 
+	// Generate Tailwind classes.
+	const verticalPaddingClasses = generateTailwindClasses(
+		'py',
+		customPadding.vertical
+	);
+	const horizontalPaddingClasses = generateTailwindClasses(
+		'px',
+		customPadding.horizontal
+	);
+
+	const customSizeClasses = generateTailwindClasses( 'size', customSize );
+
 	const iconContainerClasses = classnames(
 		`${ CSS_CLASS_PREFIX }__container`,
-		iconPaddingClasses
+		verticalPaddingClasses,
+		horizontalPaddingClasses
 	);
 
 	const iconClasses = classnames(
 		`${ CSS_CLASS_PREFIX }__icon`,
-		iconSizeClasses,
+		customSizeClasses,
 		{
-			'*:fill-current': iconOverriddeFill,
+			'*:fill-current': customOverrideFill,
 		}
 	);
 
 	const blockPropsClasses = classnames( {
-		'w-fit': icon,
+		'w-fit': customIcon,
 	} );
 
 	const iconStyles = {
-		color: iconColor,
-		background: iconBackground,
+		color: customColor,
+		background: customBackground,
 	};
 
 	// Apply block props and render the icon.

@@ -8,7 +8,11 @@ export const generateTailwindClasses = ( prefix, attribute ) => {
 	if ( ! prefix || ! attribute || typeof attribute !== 'object' ) {
 		// eslint-disable-next-line no-console
 		console.error(
-			'Invalid parameters provided to generateTailwindClasses'
+			'Invalid parameters provided to generateTailwindClasses',
+			'Prefix:',
+			prefix,
+			'Attribute:',
+			attribute
 		);
 		return '';
 	}

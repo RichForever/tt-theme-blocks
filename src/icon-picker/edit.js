@@ -1,22 +1,19 @@
-import { useTailwindClasses } from '@hooks';
+import classnames from 'classnames';
+import { generateTailwindClasses } from '@utils';
 
+import { __ } from '@wordpress/i18n';
+import { ToolbarButton } from '@wordpress/components';
+import { BlockControls, useBlockProps } from '@wordpress/block-editor';
+
+import IconInserterModal from './components/IconInserterModal';
+import BlockSettingsControls from './controls/BlockSettingsControl';
+import IconInserterPlaceholder from './components/IconInserterPlaceholder';
+import IconBlockControlsDropdown from './components/IconBlockControlsDropdown';
 import {
 	useIconParser,
 	useIconPickerState,
 	useSvgUploadAllowed,
 } from './hooks';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-import classnames from 'classnames';
-import { __ } from '@wordpress/i18n';
-import { ToolbarButton } from '@wordpress/components';
-import { BlockControls, useBlockProps } from '@wordpress/block-editor';
-
-import BlockSettingsControls from './controls/BlockSettingsControl';
-import IconInserterModal from './components/IconInserterModal';
-
-import IconInserterPlaceholder from './components/IconInserterPlaceholder';
-import IconBlockControlsDropdown from './components/IconBlockControlsDropdown';
 
 import './editor.scss';
 
@@ -24,12 +21,12 @@ const CSS_CLASS_PREFIX = 'wp-block-tt-theme-blocks-icon-picker';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const {
-		icon: iconFromAttributes,
-		iconPadding,
-		iconSize,
-		iconOverriddeFill,
-		iconColor,
-		iconBackground,
+		customIcon: iconFromAttributes,
+		customSize,
+		customOverrideFill,
+		customColor,
+		customBackground,
+		customPadding,
 	} = attributes;
 
 	// Use the icon picker state hook.
@@ -45,19 +42,28 @@ export default function Edit( { attributes, setAttributes } ) {
 	const printedIcon = useIconParser( iconFromAttributes ) || '';
 
 	// Generate Tailwind classes.
-	const iconPaddingClasses = useTailwindClasses( 'p', iconPadding );
-	const iconSizeClasses = useTailwindClasses( 'size', iconSize );
+	const verticalPaddingClasses = generateTailwindClasses(
+		'py',
+		customPadding.vertical
+	);
+	const horizontalPaddingClasses = generateTailwindClasses(
+		'px',
+		customPadding.horizontal
+	);
+
+	const customSizeClasses = generateTailwindClasses( 'size', customSize );
 
 	const iconContainerClasses = classnames(
 		`${ CSS_CLASS_PREFIX }__container`,
-		iconPaddingClasses
+		verticalPaddingClasses,
+		horizontalPaddingClasses
 	);
 
 	const iconClasses = classnames(
 		`${ CSS_CLASS_PREFIX }__icon`,
-		iconSizeClasses,
+		customSizeClasses,
 		{
-			'*:fill-current': iconOverriddeFill,
+			'*:fill-current': customOverrideFill,
 		}
 	);
 
@@ -66,8 +72,8 @@ export default function Edit( { attributes, setAttributes } ) {
 	} );
 
 	const iconStyles = {
-		color: iconColor,
-		background: iconBackground,
+		color: customColor,
+		background: customBackground,
 	};
 
 	// Set up block props.
@@ -126,8 +132,8 @@ export default function Edit( { attributes, setAttributes } ) {
 				onRequestClose={ closeModal }
 				selectedIcon={ selectedIcon }
 				setSelectedIcon={ setSelectedIcon }
-				onSave={ ( icon ) => setAttributes( { icon } ) }
-				onReset={ () => setAttributes( { icon: '' } ) }
+				onSave={ ( icon ) => setAttributes( { customIcon: icon } ) }
+				onReset={ () => setAttributes( { customIcon: '' } ) }
 				iconFromAttributes={ iconFromAttributes }
 			/>
 		</>

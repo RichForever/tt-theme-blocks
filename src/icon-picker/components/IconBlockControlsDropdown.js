@@ -77,7 +77,7 @@ const IconBlockControlsDropdown = ( {
 							<MenuItem
 								onClick={ () => {
 									setAttributes( {
-										icon: undefined,
+										customIcon: undefined,
 									} );
 									onClose();
 								} }

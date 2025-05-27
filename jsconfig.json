@@ -6,11 +6,11 @@
 		"checkJs": true,
 		"baseUrl": "./",
 		"paths": {
-			"@/*": ["*"],
-			"@utils/*": ["utils/*"],
 			"@components/*": ["components/*"],
-			"@hooks/*": ["hooks/*"],
 			"@config/*": ["config/*"],
+			"@controls/*": ["controls/*"],
+			"@hooks/*": ["hooks/*"],
+			"@utils/*": ["utils/*"],
 			"@icons/*": ["components/icons/*"]
 		}
 	},

@@ -15,6 +15,7 @@ module.exports = {
 								'components'
 							),
 							'@config': path.resolve( __dirname, 'config' ),
+							'@controls': path.resolve( __dirname, 'controls' ),
 							'@hooks': path.resolve( __dirname, 'hooks' ),
 							'@utils': path.resolve( __dirname, 'utils' ),
 							'@icons': path.resolve(

@@ -12,11 +12,10 @@ import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const {
+		customImage,
 		customHtmlTag,
-		customLayout,
-		customVerticalSpacing,
-		customHorizontalSpacing,
 		customBackground,
+		customFlex,
 		customPadding,
 		customSpacing,
 	} = attributes;
@@ -40,6 +39,13 @@ export default function Edit( { attributes, setAttributes } ) {
 		customSpacing.horizontal
 	);
 
+	const flexDirectionClasses = generateTailwindClasses(
+		'flex',
+		customFlex.direction
+	);
+
+	const flexGapClasses = generateTailwindClasses( 'gap', customFlex.gap );
+
 	const ref = useRef();
 
 	useEffect( () => {
@@ -48,27 +54,20 @@ export default function Edit( { attributes, setAttributes } ) {
 		const el = ref.current.querySelector(
 			`#${ blockProps.id } .${ ELEMENT_CSS_CLASS }`
 		);
-		const elClasses = classnames(
-			ELEMENT_CSS_CLASS,
-			verticalSpacingClasses,
-			horizontalSpacingClasses
-		);
+		const elClasses = classnames( ELEMENT_CSS_CLASS );
 
 		el.className = elClasses;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [
-		customHtmlTag,
-		customLayout,
-		customHorizontalSpacing,
-		customVerticalSpacing,
-	] );
+	}, [ customHtmlTag ] );
 
 	const containerClasses = classnames(
-		'container',
-		'mx-auto',
+		'flex',
+		'justify-between',
 		'*:border',
 		'*:border-red-500',
 		'*:border-dotted',
+		flexDirectionClasses,
+		flexGapClasses,
 		verticalSpacingClasses,
 		horizontalSpacingClasses
 	);
@@ -108,16 +107,21 @@ export default function Edit( { attributes, setAttributes } ) {
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>
+
 			<Tag { ...blockProps } ref={ ref }>
-				{ customLayout === 'boxed' ? (
-					<div className={ containerClasses }>
+				<div className={ containerClasses }>
+					<div className="basis-full">
+						<img
+							src={ customImage.url }
+							alt={ customImage.alt || customImage.title }
+						/>
+					</div>
+					<div className="basis-full">
 						<InnerBlocks
 							template={ INNER_BLOCKS_SECTION_TEMPLATE }
 						/>
 					</div>
-				) : (
-					<InnerBlocks template={ INNER_BLOCKS_SECTION_TEMPLATE } />
-				) }
+				</div>
 			</Tag>
 		</>
 	);

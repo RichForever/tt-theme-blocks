@@ -1,0 +1,8 @@
+/* eslint-disable scss/at-rule-no-unknown */
+@use "tailwindcss/base" as *;
+@use "tailwindcss/components" as *;
+@use "tailwindcss/utilities" as *;
+
+.wp-block-tt-theme-blocks-image-and-text {
+	background: transparent;
+}

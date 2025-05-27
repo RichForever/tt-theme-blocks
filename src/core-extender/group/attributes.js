@@ -1,7 +1,7 @@
 /**
- * Custom attributes for the core/column block
+ * Custom attributes for the core/group block
  */
-export const coreColumnCustomAttrbiutes = {
+export const coreGroupCustomAttrbiutes = {
 	customPadding: {
 		type: 'object',
 		default: {

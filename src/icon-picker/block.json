@@ -8,44 +8,54 @@
 	"description": "Display custom icon with various options",
 	"example": {},
 	"attributes": {
-		"icon": {
+		"customBackground": {
 			"type": "string",
 			"default": ""
 		},
-		"iconSize": {
+		"customColor": {
+			"type": "string",
+			"default": ""
+		},
+		"customPadding": {
 			"type": "object",
 			"default": {
-				"xs": "-",
-				"sm": "-",
-				"md": "-",
-				"lg": "-",
-				"xl": "-",
-				"2xl": "-"
+				"horizontal": {
+					"xs": "-",
+					"sm": "-",
+					"md": "-",
+					"lg": "-",
+					"xl": "-",
+					"2xl": "-"
+				},
+				"vertical": {
+					"xs": "-",
+					"sm": "-",
+					"md": "-",
+					"lg": "-",
+					"xl": "-",
+					"2xl": "-"
+				}	
 			}
-		},
-		"iconPadding": {
-			"type": "object",
-			"default": {
-				"xs": "-",
-				"sm": "-",
-				"md": "-",
-				"lg": "-",
-				"xl": "-",
-				"2xl": "-"
-			}
-		},
-		"iconColor": {
+		},		
+		"customIcon": {
 			"type": "string",
 			"default": ""
 		},
-		"iconBackground": {
-			"type": "string",
-			"default": ""
-		},
-		"iconOverriddeFill": {
+		"customOverrideFill": {
 			"type": "boolean",
 			"default": false
-		}
+		},
+		"customSize": {
+			"type": "object",
+			"default": {
+				"xs": "-",
+				"sm": "-",
+				"md": "-",
+				"lg": "-",
+				"xl": "-",
+				"2xl": "-"
+			}
+		}		
 	},
 	"textdomain": "tt-theme-blocks",
 	"editorScript": ["file:./index.js"],

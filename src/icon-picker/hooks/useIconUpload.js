@@ -29,7 +29,7 @@ export const useIconUpload = ( attributes, setAttributes ) => {
 					}
 
 					setAttributes( {
-						icon: svgString,
+						customIcon: svgString,
 					} );
 				} )
 				.catch( () => displayMessage( 'fileTypeError' ) );

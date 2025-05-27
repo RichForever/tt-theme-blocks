@@ -83,48 +83,24 @@ export const SPACING_OPTIONS = [
 	{ label: '80', value: '80' },
 	{ label: '96', value: '96' },
 ];
+/**
+ * Direction options for flex direction.
+ * @type {Array<{label: string, value: string}>}
+ */
+export const DIRECTION_OPTIONS = [
+	{ label: 'None', value: '-' },
+	{ label: 'row', value: 'row' },
+	{ label: 'row reverse', value: 'row-reverse' },
+	{ label: 'column', value: 'col' },
+	{ label: 'column reverse', value: 'col-reverse' },
+];
+
+/**
+ * HTML elements options for the block.
+ * @type {Array<{label: string, value: string}>}
+ */
 
 export const HTML_ELEMENTS_OPTIONS = [
 	{ label: 'div', value: 'div' },
 	{ label: 'section', value: 'section' },
 ];
-
-// Add block-specific defaults
-export const BLOCK_DEFAULTS = {
-	ICON_PICKER: {
-		padding: {
-			xs: '-',
-			sm: '-',
-			md: '-',
-			lg: '-',
-			xl: '-',
-			'2xl': '-',
-		},
-		size: {
-			xs: '-',
-			sm: '-',
-			md: '-',
-			lg: '-',
-			xl: '-',
-			'2xl': '-',
-		},
-	},
-	SECTION: {
-		sectionPadding: {
-			xs: '-',
-			sm: '-',
-			md: '-',
-			lg: '-',
-			xl: '-',
-			'2xl': '-',
-		},
-		sectionLayout: 'fullwidth',
-		sectionHtmlElement: 'section',
-	},
-};
-
-// Add block types enum
-export const BLOCK_TYPES = {
-	ICON_PICKER: 'tt-theme-blocks/icon-picker',
-	SECTION: 'tt-theme-blocks/section',
-};

@@ -2,15 +2,16 @@
 import classNames from 'classnames';
 import { generateTailwindClasses } from '@utils';
 
-export const addCoreColumnCustomClasses = ( props, blockType, attributes ) => {
+export const addCoreGroupCustomClasses = ( props, blockType, attributes ) => {
 	const { name } = blockType;
 
 	// Early return
-	if ( name !== 'core/column' ) {
+	if ( name !== 'core/group' ) {
 		return props;
 	}
 
 	const { customPadding } = attributes;
+
 	const customVerticalPaddingClasses = generateTailwindClasses(
 		'py',
 		customPadding.vertical

@@ -6,13 +6,13 @@ import PaddingControl from '@controls/Padding/PaddingControl';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
 /**
- * Add custom inspector controls to the core/column block
+ * Add custom inspector controls to the core/group block
  */
 
-export const addCoreColumnCustomInspectorControls = ( BlockEdit ) => {
+export const addCoreGroupCustomInspectorControls = ( BlockEdit ) => {
 	return ( props ) => {
 		// Early return
-		if ( props.name !== 'core/column' ) {
+		if ( props.name !== 'core/group' ) {
 			return <BlockEdit { ...props } />;
 		}
 
