@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.9.0](https://github.com/RichForever/tt-theme-blocks/compare/1.8.0...1.9.0) (2025-06-03)
+
+### 🚀 Features
+
+* code improvements, new controls ([bb4f16d](https://github.com/RichForever/tt-theme-blocks/commit/bb4f16d191c76fbc61c36054902e01c74c1e62d0))
+
 ## [1.8.0](https://github.com/RichForever/tt-theme-blocks/compare/1.7.1...1.8.0) (2025-05-27)
 
 ### 🚀 Features
