@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import BlockSettingsControlContext from '@utils/context';
+import { BlockSettingsControlContext } from '@utils';
 import { InspectorControls } from '@wordpress/block-editor';
 import PaddingControl from '@controls/Padding/PaddingControl';
 

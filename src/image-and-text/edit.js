@@ -1,6 +1,6 @@
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import classnames from 'classnames';
-import { generateTailwindClasses } from '@utils';
+import { generateUniqueId, generateTailwindClasses } from '@utils';
 
 import { __ } from '@wordpress/i18n';
 import { useEffect, useRef } from '@wordpress/element';
@@ -10,14 +10,16 @@ import BlockSettingsControls from './controls/BlockSettingsControls';
 
 import './editor.scss';
 
-export default function Edit( { attributes, setAttributes } ) {
+export default function Edit( { attributes, setAttributes, clientId } ) {
 	const {
+		customBlockId,
 		customImage,
 		customHtmlTag,
 		customBackground,
 		customFlex,
 		customPadding,
 		customSpacing,
+		customCss,
 	} = attributes;
 
 	// Generate Tailwind classes.
@@ -89,6 +91,19 @@ export default function Edit( { attributes, setAttributes } ) {
 		style: blockPropsStyles,
 	} );
 
+	// Set the customBlockId once when the block is created
+	useEffect( () => {
+		if ( ! customBlockId ) {
+			setAttributes( { customBlockId: generateUniqueId() } );
+		}
+	} );
+
+	// Replace block id token and "minify" css
+	const processedCustomCss =
+		customCss
+			?.replace( /\[block\]/g, `#block-${ clientId }` )
+			.replace( /\s+/g, '' ) || '';
+
 	const INNER_BLOCKS_SECTION_TEMPLATE = [
 		[
 			'core/paragraph',
@@ -108,6 +123,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				setAttributes={ setAttributes }
 			/>
 
+			{ processedCustomCss && <style>{ processedCustomCss }</style> }
 			<Tag { ...blockProps } ref={ ref }>
 				<div className={ containerClasses }>
 					<div className="basis-full">

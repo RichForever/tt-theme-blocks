@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { __, sprintf } from '@wordpress/i18n';
 import { useContext } from '@wordpress/element';
-import BlockSettingsControlContext from '@utils/context';
+import { BlockSettingsControlContext } from '@utils';
 import { BREAKPOINTS, SPACING_OPTIONS } from '@config/constants';
 import {
 	Button,

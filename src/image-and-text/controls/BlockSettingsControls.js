@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import FlexControl from '@controls/Flex/FlexControl';
 import HtmlTagControl from '@controls/HtmlTagControl';
-import BlockSettingsControlContext from '@utils/context';
+import { BlockSettingsControlContext } from '@utils';
+import CustomCssControl from '@controls/CustomCssControl';
 import BackgroundControl from '@controls/BackgroundControl';
 import { InspectorControls } from '@wordpress/block-editor';
 import PaddingControl from '@controls/Padding/PaddingControl';
@@ -17,6 +18,7 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 		customFlex,
 		customPadding,
 		customSpacing,
+		customCss,
 	} = attributes;
 
 	return (
@@ -48,6 +50,10 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 				<ImageControl
 					attribute={ customImage }
 					attributeName={ 'customImage' }
+				/>
+				<CustomCssControl
+					attribute={ customCss }
+					attributeName={ 'customCss' }
 				/>
 			</BlockSettingsControlContext.Provider>
 		</InspectorControls>

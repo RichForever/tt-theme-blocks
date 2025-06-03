@@ -8,6 +8,10 @@
 	"description": "Display custom section tag with various options",
 	"example": {},
 	"attributes": {
+		"customBlockId": {
+			"type": "string",
+			"default": ""
+		},
 		"customBackground": {
 			"type": "string",
 			"default": ""
@@ -61,6 +65,10 @@
 		"customLayout": {
 			"type": "string",
 			"default": "fullwidth"
+		},
+		"customCss": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"textdomain": "tt-theme-blocks",

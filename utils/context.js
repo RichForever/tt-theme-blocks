@@ -1,3 +1,7 @@
 import { createContext } from '@wordpress/element';
-const BlockSettingsControlContext = createContext();
-export default BlockSettingsControlContext;
+
+/**
+ * React context for block settings controls.
+ * Used to share block settings state and controls between components.
+ */
+export const BlockSettingsControlContext = createContext();

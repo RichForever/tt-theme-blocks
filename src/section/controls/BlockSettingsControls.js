@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import HtmlTagControl from '@controls/HtmlTagControl';
-import BlockSettingsControlContext from '@utils/context';
+import { BlockSettingsControlContext } from '@utils';
+import CustomCssControl from '@controls/CustomCssControl';
 import BackgroundControl from '@controls/BackgroundControl';
 import { InspectorControls } from '@wordpress/block-editor';
 import PaddingControl from '@controls/Padding/PaddingControl';
@@ -15,6 +16,7 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 		customBackground,
 		customPadding,
 		customSpacing,
+		customCss,
 	} = attributes;
 
 	return (
@@ -41,6 +43,10 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 					parentAttribute={ customSpacing || {} }
 					horizontalAttributeName="customSpacing.horizontal"
 					verticalAttributeName="customSpacing.vertical"
+				/>
+				<CustomCssControl
+					attribute={ customCss }
+					attributeName={ 'customCss' }
 				/>
 			</BlockSettingsControlContext.Provider>
 		</InspectorControls>

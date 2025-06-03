@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { __ } from '@wordpress/i18n';
 import { useContext } from '@wordpress/element';
-import BlockSettingsControlContext from '@utils/context';
+import { BlockSettingsControlContext } from '@utils';
 import { HTML_ELEMENTS_OPTIONS } from '@config/constants';
 import {
 	Button,
@@ -38,7 +38,7 @@ const HtmlTagControl = ( { attribute, attributeName } ) => {
 				<PanelRow>
 					<Text variant="muted">
 						{ __(
-							'Select the appropriate HTML element for your block to ensure proper semantic structure. Different elements provide different accessibility benefits and styling capabilities.',
+							'Choose the HTML tag that best suits your block. This will impact the structure and accessibility of your content.',
 							'tt-theme-blocks'
 						) }
 					</Text>

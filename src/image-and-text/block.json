@@ -8,6 +8,10 @@
 	"description": "Display custom section tag with various options",
 	"example": {},
 	"attributes": {
+		"customBlockId": {
+			"type": "string",
+			"default": ""
+		},
 		"customBackground": {
 			"type": "string",
 			"default": ""
@@ -82,7 +86,11 @@
 		"customImage": {
 			"type": "object",
 			"default": {}
-		}
+		},
+		"customCss": {
+			"type": "string",
+			"default": ""
+		}		
 	},
 	"textdomain": "tt-theme-blocks",
 	"editorScript": "file:./index.js",

@@ -89,10 +89,10 @@ export const SPACING_OPTIONS = [
  */
 export const DIRECTION_OPTIONS = [
 	{ label: 'None', value: '-' },
-	{ label: 'row', value: 'row' },
-	{ label: 'row reverse', value: 'row-reverse' },
-	{ label: 'column', value: 'col' },
-	{ label: 'column reverse', value: 'col-reverse' },
+	{ label: 'Row', value: 'row' },
+	{ label: 'Row reverse', value: 'row-reverse' },
+	{ label: 'Column', value: 'col' },
+	{ label: 'Column reverse', value: 'col-reverse' },
 ];
 
 /**

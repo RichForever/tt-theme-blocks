@@ -5,11 +5,13 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function Save( { attributes } ) {
 	const {
+		customBlockId,
 		customHtmlTag,
 		customLayout,
 		customBackground,
 		customPadding,
 		customSpacing,
+		customCss,
 	} = attributes;
 
 	// Generate Tailwind classes.
@@ -52,17 +54,27 @@ export default function Save( { attributes } ) {
 	const blockProps = useBlockProps.save( {
 		className: blockPropsClasses,
 		style: blockPropsStyles,
+		id: customBlockId,
 	} );
 
+	// Replace block id token and "minify" css
+	const processedCustomCss =
+		customCss
+			?.replace( /\[block\]/g, `#${ customBlockId }` )
+			.replace( /\s+/g, '' ) || '';
+
 	return (
-		<Tag { ...blockProps }>
-			{ customLayout === 'boxed' ? (
-				<div className={ containerClasses }>
+		<>
+			{ processedCustomCss && <style>{ processedCustomCss }</style> }
+			<Tag { ...blockProps }>
+				{ customLayout === 'boxed' ? (
+					<div className={ containerClasses }>
+						<InnerBlocks.Content />
+					</div>
+				) : (
 					<InnerBlocks.Content />
-				</div>
-			) : (
-				<InnerBlocks.Content />
-			) }
-		</Tag>
+				) }
+			</Tag>
+		</>
 	);
 }

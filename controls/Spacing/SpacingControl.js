@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { __ } from '@wordpress/i18n';
 import { useContext } from '@wordpress/element';
-import BlockSettingsControlContext from '@utils/context';
+import { BlockSettingsControlContext } from '@utils';
 import {
 	Panel,
 	PanelBody,
@@ -53,13 +53,13 @@ const SpacingControl = ( {
 	return (
 		<Panel>
 			<PanelBody
-				title={ __( 'Spacing Nested', 'tt-theme-blocks' ) }
+				title={ __( 'Spacing', 'tt-theme-blocks' ) }
 				initialOpen={ false }
 			>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(
-							'Configure the flexbox layout settings for different screen sizes. Set the direction and gap between elements to create responsive layouts.',
+							'Adjust the spacing settings for different screen sizes to create responsive layouts.',
 							'tt-theme-blocks'
 						) }
 					</Text>
