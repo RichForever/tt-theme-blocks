@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.9.1](https://github.com/RichForever/tt-theme-blocks/compare/1.9.0...1.9.1) (2025-06-03)
+
+### 📝 Documentation
+
+* **readme.md:** update readme file ([0e968c9](https://github.com/RichForever/tt-theme-blocks/commit/0e968c99175c1e8d0400786684df04bbf17fd3b2))
+
 ## [1.9.0](https://github.com/RichForever/tt-theme-blocks/compare/1.8.0...1.9.0) (2025-06-03)
 
 ### 🚀 Features
