@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.9.2](https://github.com/RichForever/tt-theme-blocks/compare/1.9.1...1.9.2) (2025-06-06)
+
+### ♻️ Refactoring
+
+* fix linter errors ([9292f32](https://github.com/RichForever/tt-theme-blocks/commit/9292f32167c9c94fd8a86fda33a8b5d57a0375d9))
+
 ## [1.9.1](https://github.com/RichForever/tt-theme-blocks/compare/1.9.0...1.9.1) (2025-06-03)
 
 ### 📝 Documentation
