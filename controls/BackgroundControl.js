@@ -10,7 +10,11 @@ import {
 	__experimentalText as Text,
 } from '@wordpress/components';
 
-const BackgroundControl = ( { attribute, attributeName } ) => {
+const BackgroundControl = ( {
+	attribute,
+	attributeName,
+	panelTitle = 'Background',
+} ) => {
 	const setAttributes = useContext( BlockSettingsControlContext );
 
 	const handleOnChangeColor = ( val ) => {
@@ -21,10 +25,7 @@ const BackgroundControl = ( { attribute, attributeName } ) => {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Background', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

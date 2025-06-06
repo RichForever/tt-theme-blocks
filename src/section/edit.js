@@ -1,5 +1,9 @@
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
-import { generateUniqueId, generateTailwindClasses } from '@utils';
+import {
+	generateUniqueId,
+	generateTailwindClasses,
+	generateTailwindPaddingClasses,
+} from '@utils';
 import classnames from 'classnames';
 
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
@@ -18,22 +22,15 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 		customVerticalSpacing,
 		customHorizontalSpacing,
 		customBackground,
-		customPadding,
 		customSpacing,
+		customPadding,
 		customCss,
 	} = attributes;
 
 	const ref = useRef();
 
 	// Generate Tailwind classes.
-	const verticalPaddingClasses = generateTailwindClasses(
-		'py',
-		customPadding.vertical
-	);
-	const horizontalPaddingClasses = generateTailwindClasses(
-		'px',
-		customPadding.horizontal
-	);
+	const paddingClasses = generateTailwindPaddingClasses( customPadding );
 
 	const verticalSpacingClasses = generateTailwindClasses(
 		'space-y',
@@ -77,10 +74,7 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 
 	const Tag = customHtmlTag;
 
-	const blockPropsClasses = classnames(
-		verticalPaddingClasses,
-		horizontalPaddingClasses
-	);
+	const blockPropsClasses = classnames( paddingClasses );
 
 	const blockPropsStyles = {
 		background: customBackground,

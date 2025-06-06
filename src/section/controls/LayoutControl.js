@@ -14,7 +14,11 @@ import {
 
 const DEFAULT_ATTRIBUTE = 'fullwidth';
 
-const LayoutControl = ( { attribute, attributeName } ) => {
+const LayoutControl = ( {
+	attribute,
+	attributeName,
+	panelTitle = 'Layout',
+} ) => {
 	const setAttributes = useContext( BlockSettingsControlContext );
 
 	const handleReset = () => {
@@ -31,10 +35,7 @@ const LayoutControl = ( { attribute, attributeName } ) => {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Layout', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

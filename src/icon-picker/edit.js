@@ -1,5 +1,8 @@
 import classnames from 'classnames';
-import { generateTailwindClasses } from '@utils';
+import {
+	generateTailwindClasses,
+	generateTailwindPaddingClasses,
+} from '@utils';
 
 import { __ } from '@wordpress/i18n';
 import { ToolbarButton } from '@wordpress/components';
@@ -42,21 +45,13 @@ export default function Edit( { attributes, setAttributes } ) {
 	const printedIcon = useIconParser( iconFromAttributes ) || '';
 
 	// Generate Tailwind classes.
-	const verticalPaddingClasses = generateTailwindClasses(
-		'py',
-		customPadding.vertical
-	);
-	const horizontalPaddingClasses = generateTailwindClasses(
-		'px',
-		customPadding.horizontal
-	);
+	const paddingClasses = generateTailwindPaddingClasses( customPadding );
 
 	const customSizeClasses = generateTailwindClasses( 'size', customSize );
 
 	const iconContainerClasses = classnames(
 		`${ CSS_CLASS_PREFIX }__container`,
-		verticalPaddingClasses,
-		horizontalPaddingClasses
+		paddingClasses
 	);
 
 	const iconClasses = classnames(

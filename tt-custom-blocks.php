@@ -28,6 +28,7 @@ function tt_custom_blocks_init() {
 	register_block_type( __DIR__ . '/build/section' );
 	register_block_type( __DIR__ . '/build/icon-picker' );
 	register_block_type( __DIR__ . '/build/image-and-text' );
+	register_block_type( __DIR__ . '/build/flex-container' );
 }
 add_action( 'init', 'tt_custom_blocks_init' );
 

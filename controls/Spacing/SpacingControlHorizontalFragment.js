@@ -1,5 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { BlockSettingsControlContext } from '@utils';
+
 import { __, sprintf } from '@wordpress/i18n';
+import { useContext } from '@wordpress/element';
 import { BREAKPOINTS, SPACING_OPTIONS } from '@config/constants';
 import { Button, PanelRow, SelectControl } from '@wordpress/components';
 
@@ -15,8 +18,9 @@ const DEFAULT_ATTRIBUTE = {
 const SpacingControlHorizontalFragment = ( {
 	parentAttribute = {},
 	attributeName,
-	setAttributes,
 } ) => {
+	const setAttributes = useContext( BlockSettingsControlContext );
+
 	const [ parentKey, childKey ] = attributeName.split( '.' );
 
 	const currentValues = {

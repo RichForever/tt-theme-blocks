@@ -1,7 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { __ } from '@wordpress/i18n';
-import { useContext } from '@wordpress/element';
-import { BlockSettingsControlContext } from '@utils';
 import {
 	Panel,
 	PanelBody,
@@ -17,15 +15,13 @@ const SpacingControl = ( {
 	parentAttribute,
 	horizontalAttributeName,
 	verticalAttributeName,
+	panelTitle = 'Spacing',
 } ) => {
-	const setAttributes = useContext( BlockSettingsControlContext );
-
 	const TABS = [
 		{
 			name: 'vertical',
 			component: (
 				<SpacingControlVerticalFragment
-					setAttributes={ setAttributes }
 					parentAttribute={ parentAttribute }
 					attributeName={ verticalAttributeName }
 				/>
@@ -35,7 +31,6 @@ const SpacingControl = ( {
 			name: 'horizontal',
 			component: (
 				<SpacingControlHorizontalFragment
-					setAttributes={ setAttributes }
 					parentAttribute={ parentAttribute }
 					attributeName={ horizontalAttributeName }
 				/>
@@ -52,10 +47,7 @@ const SpacingControl = ( {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Spacing', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

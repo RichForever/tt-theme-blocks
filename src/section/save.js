@@ -1,5 +1,8 @@
 import classnames from 'classnames';
-import { generateTailwindClasses } from '@utils';
+import {
+	generateTailwindClasses,
+	generateTailwindPaddingClasses,
+} from '@utils';
 
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
@@ -15,14 +18,8 @@ export default function Save( { attributes } ) {
 	} = attributes;
 
 	// Generate Tailwind classes.
-	const verticalPaddingClasses = generateTailwindClasses(
-		'py',
-		customPadding.vertical
-	);
-	const horizontalPaddingClasses = generateTailwindClasses(
-		'px',
-		customPadding.horizontal
-	);
+	const paddingClasses = generateTailwindPaddingClasses( customPadding );
+
 	const verticalSpacingClasses = generateTailwindClasses(
 		'space-y',
 		customSpacing.vertical
@@ -41,10 +38,7 @@ export default function Save( { attributes } ) {
 
 	const Tag = customHtmlTag;
 
-	const blockPropsClasses = classnames(
-		verticalPaddingClasses,
-		horizontalPaddingClasses
-	);
+	const blockPropsClasses = classnames( paddingClasses );
 
 	const blockPropsStyles = {
 		background: customBackground,

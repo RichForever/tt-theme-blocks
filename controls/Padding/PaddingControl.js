@@ -1,7 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { __ } from '@wordpress/i18n';
-import { useContext } from '@wordpress/element';
-import { BlockSettingsControlContext } from '@utils';
 import {
 	Panel,
 	PanelBody,
@@ -17,15 +15,13 @@ const PaddingControl = ( {
 	parentAttribute,
 	horizontalAttributeName,
 	verticalAttributeName,
+	panelTitle = 'Padding',
 } ) => {
-	const setAttributes = useContext( BlockSettingsControlContext );
-
 	const TABS = [
 		{
 			name: 'vertical',
 			component: (
 				<PaddingControlVerticalFragment
-					setAttributes={ setAttributes }
 					parentAttribute={ parentAttribute }
 					attributeName={ verticalAttributeName }
 				/>
@@ -35,7 +31,6 @@ const PaddingControl = ( {
 			name: 'horizontal',
 			component: (
 				<PaddingControlHorizontalFragment
-					setAttributes={ setAttributes }
 					parentAttribute={ parentAttribute }
 					attributeName={ horizontalAttributeName }
 				/>
@@ -52,10 +47,7 @@ const PaddingControl = ( {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Padding', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

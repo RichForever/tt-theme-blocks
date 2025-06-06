@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BlockSettingsControlContext } from '@utils';
 import { InspectorControls } from '@wordpress/block-editor';
-import PaddingControl from '@controls/Padding/PaddingControl';
+import PaddingControl from '@controls/PaddingControl';
 
 import SizeControl from './SizeControl';
 import ColorBackgroundControl from './ColorBackgroundControl';
@@ -28,9 +28,8 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 						overrideFillAttributeName={ 'customOverrideFill' }
 					/>
 					<PaddingControl
-						parentAttribute={ customPadding || {} }
-						horizontalAttributeName="customPadding.horizontal"
-						verticalAttributeName="customPadding.vertical"
+						attribute={ customPadding }
+						attributeName={ 'customPadding' }
 					/>
 					<SizeControl
 						attribute={ customSize }

@@ -21,7 +21,7 @@ const DEFAULT_ATTRIBUTE = {
 	'2xl': '-',
 };
 
-const SizeControl = ( { attribute, attributeName } ) => {
+const SizeControl = ( { attribute, attributeName, panelTitle = 'Size' } ) => {
 	const setAttributes = useContext( BlockSettingsControlContext );
 
 	const handleReset = () => {
@@ -41,10 +41,7 @@ const SizeControl = ( { attribute, attributeName } ) => {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Size', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

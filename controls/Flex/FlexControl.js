@@ -17,6 +17,7 @@ const FlexControl = ( {
 	parentAttribute,
 	directionAttributeName,
 	gapAttributeName,
+	panelTitle = 'Flexbox',
 } ) => {
 	const setAttributes = useContext( BlockSettingsControlContext );
 
@@ -52,10 +53,7 @@ const FlexControl = ( {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Flexbox', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

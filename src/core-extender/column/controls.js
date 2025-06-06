@@ -1,8 +1,11 @@
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
-import { generateTailwindClasses } from '@utils';
+import {
+	BlockSettingsControlContext,
+	generateTailwindPaddingClasses,
+} from '@utils';
 import classNames from 'classnames';
 
-import PaddingControl from '@controls/Padding/PaddingControl';
+import PaddingControl from '@controls/PaddingControl';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
 /**
@@ -19,20 +22,10 @@ export const addCoreColumnCustomInspectorControls = ( BlockEdit ) => {
 		const { attributes, setAttributes } = props;
 		const { customPadding } = attributes;
 
-		const customVerticalPaddingClasses = generateTailwindClasses(
-			'py',
-			customPadding.vertical
-		);
-		const customHorizontalPaddingClasses = generateTailwindClasses(
-			'px',
-			customPadding.horizontal
-		);
+		const paddingClasses = generateTailwindPaddingClasses( customPadding );
 
 		const blockProps = useBlockProps( {
-			className: classNames(
-				customVerticalPaddingClasses,
-				customHorizontalPaddingClasses
-			),
+			className: classNames( paddingClasses ),
 		} );
 
 		return (
@@ -41,12 +34,14 @@ export const addCoreColumnCustomInspectorControls = ( BlockEdit ) => {
 					<BlockEdit { ...props } />
 				</div>
 				<InspectorControls>
-					<PaddingControl
-						setAttributes={ setAttributes }
-						parentAttribute={ customPadding || {} }
-						horizontalAttributeName="customPadding.horizontal"
-						verticalAttributeName="customPadding.vertical"
-					/>
+					<BlockSettingsControlContext.Provider
+						value={ setAttributes }
+					>
+						<PaddingControl
+							attribute={ customPadding }
+							attributeName={ 'customPadding' }
+						/>
+					</BlockSettingsControlContext.Provider>
 				</InspectorControls>
 			</>
 		);

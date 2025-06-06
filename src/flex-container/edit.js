@@ -17,30 +17,15 @@ import './editor.scss';
 export default function Edit( { attributes, setAttributes, clientId } ) {
 	const {
 		customBlockId,
-		customImage,
 		customHtmlTag,
-		customContentBackground,
 		customBackground,
 		customFlex,
-		customContentPadding,
 		customPadding,
-		customContentSpacing,
 		customCss,
 	} = attributes;
 
 	// Generate Tailwind classes.
 	const paddingClasses = generateTailwindPaddingClasses( customPadding );
-	const contentPaddingClasses =
-		generateTailwindPaddingClasses( customContentPadding );
-
-	const verticalContentSpacingClasses = generateTailwindClasses(
-		'space-y',
-		customContentSpacing.vertical
-	);
-	const horizontalContentSpacingClasses = generateTailwindClasses(
-		'space-x',
-		customContentSpacing.horizontal
-	);
 
 	const flexDirectionClasses = generateTailwindClasses(
 		'flex',
@@ -73,23 +58,12 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 		flexGapClasses
 	);
 
-	const contentContainerClasses = classnames(
-		'basis-full',
-		contentPaddingClasses,
-		verticalContentSpacingClasses,
-		horizontalContentSpacingClasses
-	);
-
 	const Tag = customHtmlTag;
 
 	const blockPropsClasses = classnames( paddingClasses );
 
 	const blockPropsStyles = {
 		background: customBackground,
-	};
-
-	const contentStyles = {
-		background: customContentBackground,
 	};
 
 	// Set up block props.
@@ -133,20 +107,7 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 			{ processedCustomCss && <style>{ processedCustomCss }</style> }
 			<Tag { ...blockProps } ref={ ref }>
 				<div className={ containerClasses }>
-					<div className="basis-full">
-						<img
-							src={ customImage.url }
-							alt={ customImage.alt || customImage.title }
-						/>
-					</div>
-					<div
-						className={ contentContainerClasses }
-						style={ contentStyles }
-					>
-						<InnerBlocks
-							template={ INNER_BLOCKS_SECTION_TEMPLATE }
-						/>
-					</div>
+					<InnerBlocks template={ INNER_BLOCKS_SECTION_TEMPLATE } />
 				</div>
 			</Tag>
 		</>

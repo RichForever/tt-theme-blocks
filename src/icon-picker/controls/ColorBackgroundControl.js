@@ -18,6 +18,7 @@ const ColorBackgroundControl = ( {
 	backgroundAttributeName,
 	overrideFillAttribute,
 	overrideFillAttributeName,
+	panelTitle = 'Color and Background',
 } ) => {
 	const setAttributes = useContext( BlockSettingsControlContext );
 
@@ -41,10 +42,7 @@ const ColorBackgroundControl = ( {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Color and Background', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

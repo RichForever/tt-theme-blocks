@@ -5,21 +5,47 @@ export const coreGroupCustomAttrbiutes = {
 	customPadding: {
 		type: 'object',
 		default: {
-			horizontal: {
-				xs: '-',
-				sm: '-',
-				md: '-',
-				lg: '-',
-				xl: '-',
-				'2xl': '-',
+			default: {
+				top: '-',
+				right: '-',
+				bottom: '-',
+				left: '-',
 			},
-			vertical: {
-				xs: '-',
-				sm: '-',
-				md: '-',
-				lg: '-',
-				xl: '-',
-				'2xl': '-',
+			xs: {
+				top: '-',
+				right: '-',
+				bottom: '-',
+				left: '-',
+			},
+			sm: {
+				top: '-',
+				right: '-',
+				bottom: '-',
+				left: '-',
+			},
+			md: {
+				top: '-',
+				right: '-',
+				bottom: '-',
+				left: '-',
+			},
+			lg: {
+				top: '-',
+				right: '-',
+				bottom: '-',
+				left: '-',
+			},
+			xl: {
+				top: '-',
+				right: '-',
+				bottom: '-',
+				left: '-',
+			},
+			'2xl': {
+				top: '-',
+				right: '-',
+				bottom: '-',
+				left: '-',
 			},
 		},
 	},

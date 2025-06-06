@@ -1,6 +1,6 @@
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import classNames from 'classnames';
-import { generateTailwindClasses } from '@utils';
+import { generateTailwindPaddingClasses } from '@utils';
 
 export const addCoreColumnCustomClasses = ( props, blockType, attributes ) => {
 	const { name } = blockType;
@@ -11,21 +11,11 @@ export const addCoreColumnCustomClasses = ( props, blockType, attributes ) => {
 	}
 
 	const { customPadding } = attributes;
-	const customVerticalPaddingClasses = generateTailwindClasses(
-		'py',
-		customPadding.vertical
-	);
-	const customHorizontalPaddingClasses = generateTailwindClasses(
-		'px',
-		customPadding.horizontal
-	);
+
+	const paddingClasses = generateTailwindPaddingClasses( customPadding );
 
 	return {
 		...props,
-		className: classNames(
-			props.className,
-			customVerticalPaddingClasses,
-			customHorizontalPaddingClasses
-		),
+		className: classNames( props.className, paddingClasses ),
 	};
 };

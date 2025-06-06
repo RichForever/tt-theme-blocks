@@ -12,7 +12,7 @@ import {
 	__experimentalVStack as VStack,
 } from '@wordpress/components';
 
-const ImageControl = ( { attribute, attributeName } ) => {
+const ImageControl = ( { attribute, attributeName, panelTitle = 'Image' } ) => {
 	const setAttributes = useContext( BlockSettingsControlContext );
 
 	const [ mediaFile, setMediaFile ] = useState( attribute );
@@ -33,10 +33,7 @@ const ImageControl = ( { attribute, attributeName } ) => {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Image', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

@@ -20,6 +20,22 @@ module.exports = {
 			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
 		},
 		{
+			pattern: /^pt-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
+			pattern: /^pb-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
+			pattern: /^pl-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
+			pattern: /^pr-/,
+			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
+		},
+		{
 			pattern: /^p-/,
 			variants: [ 'sm', 'md', 'lg', 'xl', '2xl' ],
 		},

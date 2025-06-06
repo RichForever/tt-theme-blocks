@@ -1,5 +1,8 @@
 import classnames from 'classnames';
-import { generateTailwindClasses } from '@utils';
+import {
+	generateTailwindClasses,
+	generateTailwindPaddingClasses,
+} from '@utils';
 
 import { useBlockProps } from '@wordpress/block-editor';
 
@@ -24,21 +27,13 @@ export default function Save( { attributes } ) {
 	}
 
 	// Generate Tailwind classes.
-	const verticalPaddingClasses = generateTailwindClasses(
-		'py',
-		customPadding.vertical
-	);
-	const horizontalPaddingClasses = generateTailwindClasses(
-		'px',
-		customPadding.horizontal
-	);
+	const paddingClasses = generateTailwindPaddingClasses( customPadding );
 
 	const customSizeClasses = generateTailwindClasses( 'size', customSize );
 
 	const iconContainerClasses = classnames(
 		`${ CSS_CLASS_PREFIX }__container`,
-		verticalPaddingClasses,
-		horizontalPaddingClasses
+		paddingClasses
 	);
 
 	const iconClasses = classnames(

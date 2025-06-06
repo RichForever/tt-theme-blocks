@@ -1,21 +1,19 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import HtmlTagControl from '@controls/HtmlTagControl';
 import { BlockSettingsControlContext } from '@utils';
+
+import FlexControl from '@controls/Flex/FlexControl';
+import HtmlTagControl from '@controls/HtmlTagControl';
 import CustomCssControl from '@controls/CustomCssControl';
 import BackgroundControl from '@controls/BackgroundControl';
 import { InspectorControls } from '@wordpress/block-editor';
 import PaddingControl from '@controls/PaddingControl';
-import SpacingControl from '@controls/Spacing/SpacingControl';
-
-import LayoutControl from './LayoutControl';
 
 const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 	const {
 		customHtmlTag,
-		customLayout,
 		customBackground,
+		customFlex,
 		customPadding,
-		customSpacing,
 		customCss,
 	} = attributes;
 
@@ -26,22 +24,18 @@ const BlockSettingsControls = ( { attributes, setAttributes } ) => {
 					attribute={ customBackground }
 					attributeName={ 'customBackground' }
 				/>
-				<HtmlTagControl
-					attribute={ customHtmlTag }
-					attributeName={ 'customHtmlTag' }
-				/>
-				<LayoutControl
-					attribute={ customLayout }
-					attributeName={ 'customLayout' }
+				<FlexControl
+					parentAttribute={ customFlex || {} }
+					directionAttributeName="customFlex.direction"
+					gapAttributeName="customFlex.gap"
 				/>
 				<PaddingControl
 					attribute={ customPadding }
 					attributeName={ 'customPadding' }
 				/>
-				<SpacingControl
-					parentAttribute={ customSpacing || {} }
-					horizontalAttributeName="customSpacing.horizontal"
-					verticalAttributeName="customSpacing.vertical"
+				<HtmlTagControl
+					attribute={ customHtmlTag }
+					attributeName={ 'customHtmlTag' }
 				/>
 				<CustomCssControl
 					attribute={ customCss }

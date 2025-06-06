@@ -7,7 +7,8 @@ export const BREAKPOINTS = [
 		key: 'xs',
 		label: 'XS',
 		attribute: 'xs',
-		description: 'Extra small screens (default, no media query)',
+		description:
+			'Extra small screens and below 640px (default, no media query, no prefix in class)',
 	},
 	{
 		key: 'sm',

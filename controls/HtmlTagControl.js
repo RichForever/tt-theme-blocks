@@ -14,7 +14,11 @@ import {
 
 const DEFAULT_ATTRIBUTE = 'section';
 
-const HtmlTagControl = ( { attribute, attributeName } ) => {
+const HtmlTagControl = ( {
+	attribute,
+	attributeName,
+	panelTitle = 'HTML Tag',
+} ) => {
 	const setAttributes = useContext( BlockSettingsControlContext );
 
 	const handleReset = () => {
@@ -31,10 +35,7 @@ const HtmlTagControl = ( { attribute, attributeName } ) => {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'HTML Tag', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

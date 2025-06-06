@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tt-theme-blocks/image-and-text",
+	"name": "tt-theme-blocks/flex-container",
 	"version": "0.1.0",
-	"title": "Image and Text Block",
+	"title": "Flex Container Block",
 	"category": "tt-theme-blocks-category",
 	"description": "Display custom section tag with various options",
 	"example": {},
@@ -13,10 +13,6 @@
 			"default": ""
 		},
 		"customBackground": {
-			"type": "string",
-			"default": ""
-		},
-		"customContentBackground": {
 			"type": "string",
 			"default": ""
 		},		
@@ -40,54 +36,7 @@
 					"2xl": "-"
 				}
 			}
-		},	
-		"customContentPadding": {
-			"type": "object",
-			"default": {
-				"default": {
-					"top": "-",
-					"right": "-",
-					"bottom": "-",
-					"left": "-"
-				},
-				"xs": {
-					"top": "-",
-					"right": "-",
-					"bottom": "-",
-					"left": "-"
-				},
-				"sm": {
-					"top": "-",
-					"right": "-",
-					"bottom": "-",
-					"left": "-"
-				},
-				"md": {
-					"top": "-",
-					"right": "-",
-					"bottom": "-",
-					"left": "-"
-				},
-				"lg": {
-					"top": "-",
-					"right": "-",
-					"bottom": "-",
-					"left": "-"
-				},
-				"xl": {
-					"top": "-",
-					"right": "-",
-					"bottom": "-",
-					"left": "-"
-				},
-				"2xl": {
-					"top": "-",
-					"right": "-",
-					"bottom": "-",
-					"left": "-"
-				}
-			}
-		},	
+		},		
 		"customPadding": {
 			"type": "object",
 			"default": {
@@ -134,35 +83,10 @@
 					"left": "-"
 				}
 			}
-		},	
-		"customContentSpacing": {
-			"type": "object",
-			"default": {
-				"horizontal": {
-					"xs": "-",
-					"sm": "-",
-					"md": "-",
-					"lg": "-",
-					"xl": "-",
-					"2xl": "-"
-				},
-				"vertical": {
-					"xs": "-",
-					"sm": "-",
-					"md": "-",
-					"lg": "-",
-					"xl": "-",
-					"2xl": "-"
-				}	
-			}
-		},						
+		},							
 		"customHtmlTag": {
 			"type": "string",
 			"default": "section"
-		},
-		"customImage": {
-			"type": "object",
-			"default": {}
 		},
 		"customCss": {
 			"type": "string",

@@ -13,7 +13,11 @@ import {
 	__experimentalText as Text,
 } from '@wordpress/components';
 
-const CustomCssControl = ( { attribute, attributeName } ) => {
+const CustomCssControl = ( {
+	attribute,
+	attributeName,
+	panelTitle = 'Custom CSS',
+} ) => {
 	const setAttributes = useContext( BlockSettingsControlContext );
 
 	const handleOnChange = ( val ) => {
@@ -24,10 +28,7 @@ const CustomCssControl = ( { attribute, attributeName } ) => {
 
 	return (
 		<Panel>
-			<PanelBody
-				title={ __( 'Custom CSS', 'tt-theme-blocks' ) }
-				initialOpen={ false }
-			>
+			<PanelBody title={ panelTitle } initialOpen={ false }>
 				<PanelRow>
 					<Text variant="muted">
 						{ __(

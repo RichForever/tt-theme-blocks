@@ -11,5 +11,6 @@ import { Settings } from './Settings';
 import { Layers } from './Layers';
 import { TextSize } from './TextSize';
 import { Shapes } from './Shapes';
+import { Align } from './Align';
 
-export { Layout, Brush, Settings, Layers, TextSize, Shapes };
+export { Layout, Brush, Settings, Layers, TextSize, Shapes, Align };
